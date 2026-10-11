@@ -121,3 +121,22 @@ img{max-width:100%}
 .interiorSplitText p:not(.eyebrow){font-size:17px;line-height:1.9;color:#5b6d60}.interiorSplitReverse .interiorSplitPhoto{order:2}
 @media(max-width:800px){.interiorShell{grid-template-columns:1fr;gap:32px;padding:55px 6% 70px}.interiorSidebar{border-right:0;border-bottom:1px solid #e6e7df;padding:0 0 24px}.interiorSidebar nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.interiorSidebarNote{display:none}.interiorSplit{grid-template-columns:1fr}.interiorSplitPhoto{min-height:290px;max-height:440px}.interiorSplitReverse .interiorSplitPhoto{order:0}.interiorSplitText{padding:50px 7%}}
 @media(max-width:430px){.interiorSidebar nav{grid-template-columns:1fr}.interiorShell{padding-top:45px}.interiorSplitText{padding:42px 7%}}
+
+/* Unified photographic hero for interior pages; pool keeps its own image. */
+.pagehero, .membershipHero, .eventsHero, .lpoaHero, .contactHero {background-image:linear-gradient(180deg,rgba(4,25,19,.38),rgba(4,25,19,.08) 55%,rgba(4,25,19,.38)),url('/images/linderhof-cinematic-background.png');background-position:center;background-size:cover}
+.pagehero.amenitiesHero {background-image:linear-gradient(180deg,rgba(4,25,19,.40),rgba(4,25,19,.10) 55%,rgba(4,25,19,.40)),url('/images/pool.jpg')}
+.sectionActions{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 32px}
+.sectionActions a{border:1px solid #c6b58a;padding:11px 14px;color:#193d30;background:#fff;font-size:11px;letter-spacing:.65px;font-weight:700;text-transform:uppercase;transition:background .2s,color .2s}
+.sectionActions a:hover,.sectionActions a:focus-visible{background:#153a30;color:#fff}
+.inquiryForm{grid-template-columns:repeat(2,minmax(0,1fr)) 1.25fr auto;align-items:end}
+.inquiryForm .inquiryInterest{grid-column:1/3}
+.inquiryForm select{height:65px;border:1px solid #a89567;border-radius:0;background:white;padding:0 14px;width:100%;font:inherit;color:#17392e}
+.inquiryForm input{border-color:#a89567;letter-spacing:.3px}
+.inquiryForm button{border-color:#153a30;color:#153a30;border-radius:0}
+.inquiryForm button:hover{background:#153a30;color:white}
+.inquiryTitle{color:#153a30;border-color:#bba77b}
+.inquiryNotice,.inquiryStatus{grid-column:1/-1;line-height:1.5}
+.inquiryNotice a{text-decoration:underline}
+.inquiryStatus{font-size:13px;color:#153a30}
+@media(max-width:1050px){.inquiryForm{grid-template-columns:repeat(2,minmax(0,1fr))}.inquiryForm .inquiryInterest{grid-column:1/-1}}
+@media(max-width:680px){.inquiryForm{grid-template-columns:1fr}.inquiryForm .inquiryInterest{grid-column:1}.inquiryForm select{height:52px}.sectionActions a{flex:1 1 auto;text-align:center}}

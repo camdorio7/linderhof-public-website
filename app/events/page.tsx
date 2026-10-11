@@ -26,7 +26,7 @@ export default async function Page() {
     <InteriorLayout title="What’s Happening at Linderhof" eyebrow="FROM AROUND THE CLUB">
       <p>Follow our official Facebook page for news, event photos and updates from the clubhouse and course. For member services and available event registrations, visit LINDEX.</p>
     </InteriorLayout>
-    <section className="announcementsSection"><div className="announcementsInner">
+    <section id="club-events" className="announcementsSection"><div className="announcementsInner">
       <p className="eyebrow">UPCOMING & RECENT</p><h2>Club Events</h2>
       {lindex.events.length===0 && localEvents.length===0 ? <p>{lindex.connected ? 'No public events are currently scheduled. Check back soon or visit LINDEX for member events.' : 'For the latest event details, visit LINDEX or our Facebook page.'}</p> :
       <div className="announcementGrid">
@@ -39,7 +39,7 @@ export default async function Page() {
         </article>)}
         {localEvents.map((item,i)=><article className="announcementCard" key={`website-${i}`}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Details ↗</a>}</article>)}
       </div>}
-    </div></section><section className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2><div className="announcementGrid">{site.announcements.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Learn more ↗</a>}</article>)}</div></div></section>
+    </div></section><section id="club-announcements" className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2><div className="announcementGrid">{site.announcements.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Learn more ↗</a>}</article>)}</div></div></section>
     <section className="socialSection" aria-labelledby="facebook-heading">
       <div className="facebookFeature">
         <div className="facebookFeatureCopy">
