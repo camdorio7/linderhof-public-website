@@ -1,3 +1,4 @@
+import {InteriorLayout} from '../InteriorLayout';
 import { getLindexEvents } from '../../lib/lindex-events';
 import site from '../../content/site.json';
 import Link from 'next/link';
@@ -22,11 +23,9 @@ export default async function Page() {
       <h1>News &amp; Events</h1>
       <p>Stay up to date with club news, tournaments, gatherings and announcements.</p>
     </section>
-    <section className="intro">
-      <p className="eyebrow">FROM AROUND THE CLUB</p>
-      <h2>What’s Happening at Linderhof</h2>
+    <InteriorLayout title="What’s Happening at Linderhof" eyebrow="FROM AROUND THE CLUB">
       <p>Follow our official Facebook page for news, event photos and updates from the clubhouse and course. For member services and available event registrations, visit LINDEX.</p>
-    </section>
+    </InteriorLayout>
     <section className="announcementsSection"><div className="announcementsInner">
       <p className="eyebrow">UPCOMING & RECENT</p><h2>Club Events</h2>
       {lindex.events.length===0 && localEvents.length===0 ? <p>{lindex.connected ? 'No public events are currently scheduled. Check back soon or visit LINDEX for member events.' : 'For the latest event details, visit LINDEX or our Facebook page.'}</p> :

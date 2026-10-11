@@ -97,3 +97,27 @@ img{max-width:100%}
 @media(max-width:680px){.kernHeader{padding:8px 3% 0}.utilityNav{flex-wrap:wrap;justify-content:center;gap:7px 18px;padding:6px 0 10px;line-height:1.5}.utilityNav>div{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}.mainNav{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0}.centerLogo{order:-1}.navHalf{width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:5px 14px;padding:5px 0;font-size:11px;line-height:1.7}.navHalf a{display:inline-block;padding:3px 0}.crestLogo{width:86px;height:86px}.centerLogo{min-height:86px}.hero{min-height:620px;height:auto;padding-top:250px;padding-bottom:65px;align-items:center}.heroInner{margin:0;padding:20px 7%}.hero h1{font-size:clamp(38px,10vw,60px)}.hero p:not(.eyebrow){font-size:16px;line-height:1.6}.pagehero{min-height:0;padding:300px 6% 65px}.pagehero h1{font-size:clamp(35px,9vw,56px)}.adminMain{padding-top:250px}.footer{gap:22px}.membershipCardTop{flex-wrap:wrap}.rateTable{display:block;overflow-x:auto;max-width:100%}}
 @media(max-width:380px){.utilityNav{font-size:8px}.navHalf{font-size:10px;gap:3px 10px}.hero{padding-top:270px}.pagehero{padding-top:325px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Interior page refinement: preserves homepage, masthead and original Kernwood-inspired navigation */
+.interiorShell{display:grid;grid-template-columns:minmax(225px,285px) minmax(0,1fr);gap:clamp(36px,5vw,92px);max-width:1250px;margin:0 auto;padding:90px 5% 105px;background:#fff}
+.interiorSidebar{border-right:1px solid #e6e7df;padding:8px 26px 0 0;align-self:start}
+.interiorSidebarLabel{font-size:11px;font-weight:700;letter-spacing:2.4px;color:#9a835a;margin:0 0 24px}
+.interiorSidebar nav{display:grid;gap:0}
+.interiorSidebar nav a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:17px 0;border-bottom:1px solid #e8e9e3;font-size:13px;letter-spacing:1.15px;text-transform:uppercase;color:#263a30;transition:color .2s}
+.interiorSidebar nav a:hover,.interiorSidebar nav a:focus-visible{color:#997d43}
+.interiorSidebar nav span{color:#b09a67;font-size:13px}
+.interiorSidebarNote{margin-top:42px;padding:23px;background:#f5f4ef;font-size:12px;line-height:1.8}
+.interiorSidebarNote strong{letter-spacing:1.2px;font-size:11px}
+.interiorSidebarNote a{color:#36563f;text-decoration:underline}
+.interiorBody{min-width:0;font-size:17px;line-height:1.95;color:#485b50}
+.interiorTitle{font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(34px,4.2vw,58px);line-height:1.25;font-weight:400;color:#153a30;margin:10px 0 26px}
+.interiorBody h3{font-family:'Libre Baskerville',Georgia,serif;color:#173b2c;font-size:24px;font-weight:400;margin:34px 0 12px}
+.interiorBody p{margin:0 0 21px}.interiorBody .interiorLead{font-weight:600;color:#24382e;font-size:clamp(18px,2vw,23px);line-height:1.75}
+.interiorBody .button{margin-top:8px}.associationContacts{display:grid;gap:15px;margin-top:18px}.associationContacts>div{padding:20px 24px;background:#f7f6f1;border-left:3px solid #bba77b}.associationContacts p{margin:6px 0 0}.associationContacts a{text-decoration:underline;color:#184c39}
+.interiorSplit{display:grid;grid-template-columns:1fr 1fr;background:#fff;min-height:470px;border-top:1px solid #e8e8e1}
+.interiorSplitPhoto{min-height:420px;overflow:hidden}.interiorSplitPhoto img{width:100%;height:100%;object-fit:cover;display:block}
+.interiorSplitText{padding:clamp(42px,8vw,110px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.interiorSplitText h2{font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(30px,3.6vw,52px);font-weight:400;color:#17392c;line-height:1.3;margin:12px 0 20px}
+.interiorSplitText p:not(.eyebrow){font-size:17px;line-height:1.9;color:#5b6d60}.interiorSplitReverse .interiorSplitPhoto{order:2}
+@media(max-width:800px){.interiorShell{grid-template-columns:1fr;gap:32px;padding:55px 6% 70px}.interiorSidebar{border-right:0;border-bottom:1px solid #e6e7df;padding:0 0 24px}.interiorSidebar nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.interiorSidebarNote{display:none}.interiorSplit{grid-template-columns:1fr}.interiorSplitPhoto{min-height:290px;max-height:440px}.interiorSplitReverse .interiorSplitPhoto{order:0}.interiorSplitText{padding:50px 7%}}
+@media(max-width:430px){.interiorSidebar nav{grid-template-columns:1fr}.interiorShell{padding-top:45px}.interiorSplitText{padding:42px 7%}}
