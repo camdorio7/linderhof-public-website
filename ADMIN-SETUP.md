@@ -16,3 +16,9 @@ The website has a private `/admin` dashboard. The dashboard edits `content/site.
 - GitHub API can return a conflict if another editor changes the file while the dashboard is open. Reload and retry after checking changes.
 - If you do not configure environment variables, the public website still works, but admin login is disabled.
 - No email form is activated.
+
+
+## Expanded content manager
+The admin page now supports editing events, six membership rate labels/prices, the membership notice, Facebook page URL, and selecting among five pre-uploaded club photos. Saving commits `content/site.json` to GitHub and Vercel rebuilds the site. Photo **uploads** and PDF replacement are not supported in this version; add images to `public/images` through GitHub. Keep membership rates synchronized with the official PDF.
+
+Security: use a strong `ADMIN_PASSWORD`, a long random `ADMIN_SESSION_SECRET`, and a GitHub fine-grained token restricted to this repository with Contents read/write. Do not put these values in the code or in the ZIP.

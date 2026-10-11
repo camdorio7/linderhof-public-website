@@ -10,5 +10,37 @@
       "description": "Visit our official Facebook page for the latest news and club activities.",
       "link": "https://www.facebook.com/LinderhofCountryClub/"
     }
+  ],
+  "heroImage": "/images/golf-aerial.jpg",
+  "golfImage": "/images/golf-mountain.jpg",
+  "poolImage": "/images/pool.jpg",
+  "membershipNote": "The official 2027 membership guide governs rates, eligibility, discounts and policies.",
+  "events": [],
+  "facebookUrl": "https://www.facebook.com/LinderhofCountryClub/",
+  "membershipRates": [
+    {
+      "name": "Full Week Couple/Family",
+      "price": "$985"
+    },
+    {
+      "name": "Full Week Individual",
+      "price": "$600"
+    },
+    {
+      "name": "Full Week Individual \u2014 Senior 65+ / Veterans",
+      "price": "$540"
+    },
+    {
+      "name": "Full Week Individual \u2014 Group Rate",
+      "price": "$525"
+    },
+    {
+      "name": "Junior Golf (under 18)",
+      "price": "$100"
+    },
+    {
+      "name": "Social",
+      "price": "$65"
+    }
   ]
 }
