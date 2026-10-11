@@ -6,6 +6,8 @@ export const metadata = {
   description: 'See Linderhof Country Club announcements, tournaments, photographs and community events on our official Facebook page.',
 };
 
+type ClubEvent = { title: string; date: string; description: string; link?: string };
+const clubEvents: ClubEvent[] = site.events as ClubEvent[];
 const FACEBOOK_URL = site.facebookUrl;
 const FACEBOOK_EMBED = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(FACEBOOK_URL)}&tabs=timeline&width=500&height=650&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false`;
 
@@ -21,7 +23,7 @@ export default function Page() {
       <h2>What’s Happening at Linderhof</h2>
       <p>Follow our official Facebook page for news, event photos and updates from the clubhouse and course. For member services and available event registrations, visit LINDEX.</p>
     </section>
-    <section className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">UPCOMING & RECENT</p><h2>Club Events</h2>{site.events.length===0?<p>Follow our Facebook page for upcoming events.</p>:<div className="announcementGrid">{site.events.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Details ↗</a>}</article>)}</div>}</div></section><section className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2><div className="announcementGrid">{site.announcements.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Learn more ↗</a>}</article>)}</div></div></section>
+    <section className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">UPCOMING & RECENT</p><h2>Club Events</h2>{clubEvents.length===0?<p>Follow our Facebook page for upcoming events.</p>:<div className="announcementGrid">{clubEvents.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Details ↗</a>}</article>)}</div>}</div></section><section className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2><div className="announcementGrid">{site.announcements.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Learn more ↗</a>}</article>)}</div></div></section>
     <section className="socialSection" aria-labelledby="facebook-heading">
       <div className="facebookFeature">
         <div className="facebookFeatureCopy">

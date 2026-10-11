@@ -69,3 +69,9 @@ body{background:#fff}
 
 /* Admin content manager enhancements */
 .adminRate{display:grid;grid-template-columns:minmax(0,2fr) minmax(100px,1fr);gap:12px;margin:12px 0}.adminRate input,.adminField select{width:100%;padding:12px;border:1px solid #b9c2b9;border-radius:4px;background:white;color:#202b22}.adminPreview{display:block;max-width:340px;width:100%;height:170px;object-fit:cover;margin-top:12px;border-radius:6px}@media(max-width:600px){.adminRate{grid-template-columns:1fr}}
+
+/* Full, uncropped 2026 crest asset: keep the entire shield visible. */
+.centerLogo{overflow:visible;min-height:160px;transform:translateY(-10px)}
+.crestLogo{width:172px;height:172px;max-width:none;object-fit:contain;object-position:center;filter:drop-shadow(0 3px 8px rgba(0,0,0,.5));border-radius:3px}
+@media(max-width:1000px){.crestLogo{width:132px;height:132px}.centerLogo{min-height:132px}}
+@media(max-width:680px){.crestLogo{width:100px;height:100px}.centerLogo{min-height:100px;transform:none}}
