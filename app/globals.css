@@ -26,3 +26,10 @@ body{background:#fff}
 /* Official Linderhof crest in the Kernwood-style centered header */
 .crestLogo{display:block;width:154px;max-width:100%;height:142px;object-fit:contain;object-position:center;filter:drop-shadow(0 2px 5px rgba(0,0,0,.45))}
 @media(max-width:680px){.crestLogo{width:94px;height:88px}}
+/* Live form feedback and accessible fields */
+.honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.inquiryForm button:disabled{opacity:.6;cursor:wait}
+.inquiryForm .messageField{grid-column:1/-1}
+.inquiryForm textarea{width:100%;min-height:110px;border:1px solid #2a8cc8;padding:15px;font:inherit;resize:vertical}
+.formStatus{grid-column:1/-1;font-size:14px;color:#173c2b;min-height:20px}
+.inquiryForm label:focus-within{outline-offset:3px}
