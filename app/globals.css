@@ -87,3 +87,13 @@ body{background:#fff}
 
 /* Admin-only unpublished content preview */
 .adminDraftPreview{background:#f7f5ef;border:1px solid #d7d1c2;border-radius:12px;padding:22px;margin:22px 0;color:#183d30}.adminDraftPreview img{width:100%;height:240px;object-fit:cover;border-radius:8px}.adminDraftPreview h2,.adminDraftPreview h3{margin:16px 0 8px}.adminDraftPreview p{line-height:1.6}
+
+/* Launch polish: accessibility and compact-screen improvements; desktop visual style unchanged. */
+.skipToContent{position:absolute;top:-80px;left:16px;z-index:1000;background:#fff;color:#102f25;padding:12px 18px;font-weight:700}
+.skipToContent:focus{top:10px}
+:where(a,button,input,textarea,select):focus-visible{outline:3px solid #d9b96c;outline-offset:3px}
+img{max-width:100%}
+@media(max-width:900px){.mainNav{grid-template-columns:minmax(0,1fr) 145px minmax(0,1fr);gap:6px}.navHalf{gap:9px;white-space:normal;text-align:center;letter-spacing:.7px;font-size:clamp(10px,1.4vw,13px)}.utilityNav{letter-spacing:.5px}.centerLogo{min-width:0}}
+@media(max-width:680px){.kernHeader{padding:8px 3% 0}.utilityNav{flex-wrap:wrap;justify-content:center;gap:7px 18px;padding:6px 0 10px;line-height:1.5}.utilityNav>div{display:flex;align-items:center;justify-content:center;flex-wrap:wrap}.mainNav{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0}.centerLogo{order:-1}.navHalf{width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:5px 14px;padding:5px 0;font-size:11px;line-height:1.7}.navHalf a{display:inline-block;padding:3px 0}.crestLogo{width:86px;height:86px}.centerLogo{min-height:86px}.hero{min-height:620px;height:auto;padding-top:250px;padding-bottom:65px;align-items:center}.heroInner{margin:0;padding:20px 7%}.hero h1{font-size:clamp(38px,10vw,60px)}.hero p:not(.eyebrow){font-size:16px;line-height:1.6}.pagehero{min-height:0;padding:300px 6% 65px}.pagehero h1{font-size:clamp(35px,9vw,56px)}.adminMain{padding-top:250px}.footer{gap:22px}.membershipCardTop{flex-wrap:wrap}.rateTable{display:block;overflow-x:auto;max-width:100%}}
+@media(max-width:380px){.utilityNav{font-size:8px}.navHalf{font-size:10px;gap:3px 10px}.hero{padding-top:270px}.pagehero{padding-top:325px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
