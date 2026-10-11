@@ -1,0 +1,22 @@
+import Link from 'next/link';
+import {InteriorLayout, InteriorSplit} from '../InteriorLayout';
+
+export const metadata = {title:'About Us | Linderhof Country Club',description:'Discover golf, swimming, clubhouse gatherings and community at Linderhof Country Club in Glen, New Hampshire.'};
+
+export default function AboutPage(){return <main className="aboutPage">
+  <section className="pagehero aboutHero"><p className="eyebrow light">GLEN, NEW HAMPSHIRE</p><h1>About Linderhof</h1><p>A mountain retreat. A welcoming community. A place to belong.</p></section>
+  <InteriorLayout title="Welcome to Linderhof Country Club" eyebrow="OUR CLUB · OUR COMMUNITY">
+    <p className="interiorLead">A special place to gather, play, and enjoy the beauty of the White Mountains.</p>
+    <p>Nestled in the heart of New Hampshire’s beautiful White Mountains, Linderhof Country Club offers a unique blend of recreation, relaxation, and community in a picturesque mountain setting.</p>
+    <p>Located in Glen, New Hampshire, our private club features a scenic 9-hole executive golf course, a newly constructed heated outdoor swimming pool, a welcoming clubhouse, and a lively calendar of social gatherings and special events.</p>
+    <p>Whether you’re enjoying a morning round of golf, spending a summer afternoon by the pool, participating in a tournament, or gathering with friends and neighbors at the clubhouse, Linderhof offers something for everyone.</p>
+    <p className="aboutEmphasis">More than a country club, Linderhof is a community where friendships grow, traditions continue, and lasting memories are made.</p>
+    <div className="aboutQuickLinks"><Link href="/golf">Explore Golf <span aria-hidden="true">↗</span></Link><Link href="/amenities">Pool & Amenities <span aria-hidden="true">↗</span></Link><Link href="/events">Club Events <span aria-hidden="true">↗</span></Link><Link href="/membership">Membership <span aria-hidden="true">↗</span></Link></div>
+  </InteriorLayout>
+  <div className="aboutSectionHeading"><p className="eyebrow">THE LINDERHOF EXPERIENCE</p><h2>Find Your Place Here</h2><p>From time on the fairways to afternoons by the pool, discover the experiences that bring our community together.</p></div>
+  <InteriorSplit image="/images/golf-mountain.jpg" alt="Linderhof golf course with the White Mountains in the background" eyebrow="GOLF IN THE WHITE MOUNTAINS" title="Enjoy the Game"><p>Enjoy our scenic 9-hole executive golf course, offering a welcoming experience for golfers of varying skill levels amid the natural beauty of Mount Washington Valley.</p><Link className="button dark" href="/golf">EXPLORE GOLF ↗</Link></InteriorSplit>
+  <InteriorSplit image="/images/pool.jpg" alt="Heated outdoor swimming pool at Linderhof Country Club" eyebrow="SUMMER AT LINDERHOF" title="Relax by the Pool" reverse><p>Spend warm summer days at our newly constructed heated outdoor swimming pool, a favorite place for members and families to unwind and spend time together.</p><Link className="button dark" href="/amenities">POOL & AMENITIES ↗</Link></InteriorSplit>
+  <InteriorSplit image="/images/entrance.jpg" alt="Entrance to Linderhof Country Club" eyebrow="A PLACE TO GATHER" title="The Clubhouse Experience"><p>Our clubhouse is at the heart of Linderhof—a comfortable place to enjoy food, refreshments, and time with friends after a round of golf or a day outdoors.</p><Link className="button dark" href="/amenities">EXPLORE AMENITIES ↗</Link></InteriorSplit>
+  <InteriorSplit image="/images/golf-aerial.jpg" alt="Aerial view of the Linderhof golf course" eyebrow="EVENTS & TRADITIONS" title="Something for Everyone" reverse><p>From golf tournaments and seasonal celebrations to music bingo and social gatherings, Linderhof brings members together throughout the year.</p><Link className="button dark" href="/events">NEWS & EVENTS ↗</Link></InteriorSplit>
+  <section className="aboutJoin"><p className="eyebrow light">DISCOVER YOUR PLACE AT LINDERHOF</p><h2>Come for the Recreation.<br/>Stay for the Community.</h2><p>Whether you’re a longtime member, a seasonal resident, or considering joining, we invite you to experience the mountain lifestyle and welcoming atmosphere of Linderhof Country Club.</p><div className="aboutJoinActions"><Link className="button cream" href="/membership">EXPLORE MEMBERSHIP ↗</Link><Link className="aboutJoinTextLink" href="/contact">CONTACT & DIRECTIONS ↗</Link></div></section>
+</main>}

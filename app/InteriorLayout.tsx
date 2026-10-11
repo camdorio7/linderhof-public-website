@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type {ReactNode} from 'react';
-const links=[['/contact','About & Directions'],['/golf','Golf'],['/membership','Membership'],['/amenities','Pool & Amenities'],['/events','News & Events'],['/lpoa','LPOA']];
+const links=[['/about','About Us'],['/golf','Golf'],['/membership','Membership'],['/amenities','Pool & Amenities'],['/events','News & Events'],['/lpoa','LPOA']];
 const pageButtons: Record<string,{label:string;href:string}[]> = {
  'Golf at Linderhof':[{label:'Course & Policies',href:'#course-details'},{label:'Golf Memberships',href:'/membership'},{label:'Club Events',href:'/events'},{label:'Member Portal',href:'https://linderhofmembers.com'}],
  '2027 Membership':[{label:'Membership Rates',href:'#membership-rates'},{label:'Download Guide',href:'/2027-membership-guide.pdf'},{label:'Request Information',href:'#membership-inquiry'}],
