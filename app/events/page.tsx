@@ -1,3 +1,4 @@
+import site from '../../content/site.json';
 import Link from 'next/link';
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default function Page() {
       <h2>What’s Happening at Linderhof</h2>
       <p>Follow our official Facebook page for news, event photos and updates from the clubhouse and course. For member services and available event registrations, visit LINDEX.</p>
     </section>
+    <section className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2><div className="announcementGrid">{site.announcements.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Learn more ↗</a>}</article>)}</div></div></section>
     <section className="socialSection" aria-labelledby="facebook-heading">
       <div className="facebookFeature">
         <div className="facebookFeatureCopy">
