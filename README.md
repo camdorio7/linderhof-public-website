@@ -25,3 +25,10 @@ The checkout route validates a fixed allowlist of product IDs and uses server-si
 
 ## Before public launch
 Replace stock photography, review all policies and membership information with the club, add approved LPOA content, connect a managed news/events feed, and complete the shop fulfillment/payment webhook integration.
+
+
+## Existing Wix store link
+
+The Shop page uses `WIX_SHOP_URL` (a server-side Vercel environment variable) to link to the existing Wix-hosted store. Set it to the permanent **HTTPS** Wix store URL that will remain accessible after `linderhofcountryclub.com` DNS moves to Vercel. Do **not** set it to `https://www.linderhofcountryclub.com/...` if that domain will point to the new website, or the shop link will loop back to Vercel. Until this variable is configured, the Shop page displays a coming-soon notice rather than a broken link.
+
+In Vercel: Project → Settings → Environment Variables → Add `WIX_SHOP_URL`, then redeploy. This project does not process payments; checkout remains on Wix. The old Stripe API checkout endpoint and sample catalog have been removed. Supabase shop tables are not used by this storefront.
