@@ -301,3 +301,27 @@ img{max-width:100%}
  .footer{padding:35px 6% 24px}
  .aboutSectionHeading{padding:38px 6% 24px}
 }
+
+/* Final footer and homepage transition: compact, aligned and responsive. */
+.footer{display:block;padding:0;background:#102d24;color:#e8eee8}
+.footerMain{max-width:1440px;margin:auto;padding:55px 6% 42px;display:grid;grid-template-columns:minmax(250px,1.65fr) minmax(120px,.7fr) minmax(160px,.9fr) minmax(170px,.9fr);gap:clamp(24px,3vw,58px);align-items:start}
+.footerBrandLink{display:flex;align-items:center;gap:16px;width:fit-content}
+.footerCrest{width:70px;height:83px;object-fit:contain;flex-shrink:0}
+.footerbrand{display:block;font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(16px,1.35vw,21px);line-height:1.4;letter-spacing:.045em;text-transform:uppercase}
+.footerTagline{display:block;margin-top:6px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#c4b58b}
+.footerIdentity p{max-width:340px;margin:16px 0 10px;font-size:13px;line-height:1.65;color:#b8c9be}
+.footerAddress{display:inline-block;font-size:12px;line-height:1.6;color:#e2e6dc}
+.footerLinkColumn,.footerMember{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.footerLinkColumn h2,.footerMember h2{font-family:'DM Sans',Arial,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.17em;color:#cbb98a;margin:4px 0 8px}
+.footerLinkColumn a{font-size:13px;line-height:1.5;color:#d6e0d8}
+.footer a:hover{color:#e4c988}
+.footerMember p{font-size:13px;line-height:1.6;margin:0;color:#b8c9be}
+.footerMemberButton{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;padding:12px 16px;margin-top:4px;border:1px solid #a4aa94;font-size:12px;letter-spacing:.03em}
+.footerBottom{max-width:1440px;margin:auto;padding:20px 6% 24px;border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;color:#aebfb4}
+/* Remove unintended blank band below the hero and avoid any horizontal overflow. */
+.hero{margin-bottom:0;display:flex}
+.hero + .intro{margin-top:0;border-top:0;background:var(--cream)}
+body{overflow-x:hidden}
+@media(max-width:1050px){.footerMain{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}.footerIdentity{grid-column:1/-1}}
+@media(max-width:680px){.footerMain{padding:38px 6% 32px;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 18px}.footerIdentity{grid-column:1/-1}.footerCrest{width:57px;height:70px}.footerMember{grid-column:1/-1}.footerBottom{padding:18px 6% 22px}.footerbrand{font-size:16px}}
+@media(max-width:380px){.footerMain{grid-template-columns:1fr}.footerIdentity,.footerMember{grid-column:auto}}
