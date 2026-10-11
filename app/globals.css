@@ -52,3 +52,14 @@ body{background:#fff}
 /* Large hero images must use original high-resolution drone photographs. */
 .contactHero{background-image:linear-gradient(180deg,rgba(4,25,19,.5),rgba(4,25,19,.12) 55%,rgba(4,25,19,.4)),url('/images/golf-aerial.jpg')}
 @media(max-width:750px){.membershipCards,.policyGrid,.socialGrid{grid-template-columns:1fr}.membershipSection,.socialSection{padding:60px 6%}}
+
+/* Official Facebook feed — News & Events */
+.facebookFeature{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,500px);gap:clamp(30px,6vw,96px);align-items:start;max-width:1180px;margin:0 auto;padding:clamp(30px,5vw,80px) 24px}
+.facebookFeatureCopy{padding-top:24px}
+.facebookFeatureCopy h2{margin:12px 0 24px}
+.facebookFeatureCopy p{line-height:1.75}
+.facebookFeatureFeed{min-width:0;background:#fff;border:1px solid #e6e6e1;padding:12px;box-shadow:0 12px 32px rgba(0,0,0,.06);text-align:center}
+.facebookFeedFallback{font-size:13px;margin:12px 0 4px}
+.facebookFeedFallback a,.facebookMemberLink a{color:#154b35;text-decoration:underline;text-underline-offset:4px}
+.facebookMemberLink{margin-top:28px;font-size:13px;letter-spacing:.07em;font-weight:700}
+@media(max-width:800px){.facebookFeature{grid-template-columns:1fr;gap:26px}.facebookFeatureCopy{padding-top:0}.facebookFeatureFeed iframe{max-width:100%}}
