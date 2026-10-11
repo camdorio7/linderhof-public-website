@@ -325,3 +325,42 @@ body{overflow-x:hidden}
 @media(max-width:1050px){.footerMain{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}.footerIdentity{grid-column:1/-1}}
 @media(max-width:680px){.footerMain{padding:38px 6% 32px;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 18px}.footerIdentity{grid-column:1/-1}.footerCrest{width:57px;height:70px}.footerMember{grid-column:1/-1}.footerBottom{padding:18px 6% 22px}.footerbrand{font-size:16px}}
 @media(max-width:380px){.footerMain{grid-template-columns:1fr}.footerIdentity,.footerMember{grid-column:auto}}
+
+/* Header overflow fix — keep navigation, crest and location label within viewport. */
+.kernHeader{max-width:100%;overflow:visible}
+.mainNav{width:100%;grid-template-columns:minmax(0,1fr) clamp(120px,13vw,185px) minmax(0,1fr);gap:clamp(6px,1vw,16px)}
+.navHalf{min-width:0;gap:clamp(8px,1.2vw,20px);justify-content:space-evenly;font-size:clamp(10px,1.05vw,17px);letter-spacing:clamp(.2px,.12vw,1.5px)}
+.navHalf a{white-space:normal;text-align:center;overflow-wrap:normal}
+.centerLogo{min-width:0;width:100%;min-height:0;transform:none}
+.crestLogo{width:min(100%,172px);height:auto;max-height:172px;object-fit:contain}
+.hero{min-width:0;overflow:hidden}
+.heroInner{width:min(100%,1100px);max-width:calc(100% - 32px);margin-left:auto;margin-right:auto;min-width:0}
+.hero .eyebrow.light{display:block;position:relative;z-index:1;max-width:100%;white-space:normal;overflow-wrap:break-word;line-height:1.5;margin:0 auto 12px;text-align:center;letter-spacing:clamp(1.2px,.25vw,3px)}
+.hero h1{font-size:clamp(40px,5.2vw,82px);overflow-wrap:normal;text-wrap:balance;max-width:100%}
+@media(max-width:1100px) and (min-width:681px){
+ .mainNav{grid-template-columns:minmax(0,1fr) 135px minmax(0,1fr)}
+ .navHalf{font-size:clamp(10px,1.2vw,14px);gap:8px;letter-spacing:.3px}
+ .crestLogo{max-height:135px}
+ .heroInner{margin-bottom:5vh}
+}
+@media(max-width:680px){
+ .mainNav{display:flex;flex-direction:column;align-items:center;gap:4px}
+ .centerLogo{order:-1;width:auto}
+ .crestLogo{width:90px;height:90px;max-height:90px}
+ .navHalf{width:100%;justify-content:center;flex-wrap:wrap;font-size:11px;gap:7px 15px}
+ .hero{padding-top:285px;min-height:650px;height:auto}
+ .heroInner{max-width:100%;width:100%;margin:0 auto;padding:12px 5% 22px}
+ .hero .eyebrow.light{font-size:10px;letter-spacing:1.8px}
+ .hero h1{font-size:clamp(36px,9vw,58px);line-height:1.1}
+}
+
+/* Final hero crest/location clearance: reserve a readable space under the logo. */
+@media (min-width:681px){
+ .centerLogo .crestLogo{max-height:150px;width:min(100%,150px)}
+ .heroInner{transform:translateY(48px)}
+ .hero .eyebrow.light{margin-bottom:18px}
+}
+@media (max-width:680px){
+ .heroInner{transform:none}
+ .hero .eyebrow.light{margin-top:8px}
+}

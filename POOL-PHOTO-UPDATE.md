@@ -1,0 +1,1 @@
+Replaced public/images/pool.jpg with the edited aerial pool image (green lawn, no people). All pool images on the site, including the amenities hero, cards, editorial backgrounds and content/site.json references, use this single file. Also improved hero crest/location label clearance in app/globals.css.
