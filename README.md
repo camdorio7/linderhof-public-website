@@ -34,3 +34,11 @@ Remove any old `app/api/checkout/route.ts` or `app/shop` files still in GitHub; 
 - Membership, Golf, Pool & Amenities, Events, LPOA, Contact, Passes and Member Sign In routes remain available.
 - For existing GitHub deployments, **delete old `app/api/inquiry/route.ts` and `app/api/checkout/route.ts`** if still present; uploading a ZIP does not delete existing files.
 - News/events and LPOA content require club-approved updates before public launch.
+
+
+## 2027 guide and social feeds
+- Full guide: `/public/2027-membership-guide.pdf`, linked from Membership.
+- Facebook: Set `NEXT_PUBLIC_FACEBOOK_PAGE_URL` to the official public Facebook Page URL in Vercel; the public Page Plugin timeline will render if Facebook allows the page to be embedded. Some browsers block third-party embeds.
+- Instagram: Set `NEXT_PUBLIC_INSTAGRAM_URL` to the club's official Instagram profile URL. A live Instagram post grid requires Meta-approved access or a compliant third-party provider; the site currently offers a direct profile link.
+- No Resend configuration is needed yet. Inquiry forms remain disabled until email delivery is configured.
+- The low-resolution entrance photo is no longer used as a full-screen hero. Original Linderhof drone images are used instead.
