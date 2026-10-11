@@ -25,3 +25,12 @@ The membership inquiry form and contact form submit to `/api/inquiry`. They show
 ## GitHub update
 
 Remove any old `app/api/checkout/route.ts` or `app/shop` files still in GitHub; uploading a ZIP alone does not delete stale repository files.
+
+
+## October 2026 photo and pre-domain update
+- Actual Linderhof photos now replace stock imagery on key pages.
+- Inquiry forms are intentionally paused until the domain and verified sender are ready; no submissions are accepted or silently discarded.
+- Removed unused Resend inquiry API. No Resend environment variables are needed for this version.
+- Membership, Golf, Pool & Amenities, Events, LPOA, Contact, Passes and Member Sign In routes remain available.
+- For existing GitHub deployments, **delete old `app/api/inquiry/route.ts` and `app/api/checkout/route.ts`** if still present; uploading a ZIP does not delete existing files.
+- News/events and LPOA content require club-approved updates before public launch.

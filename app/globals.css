@@ -33,3 +33,16 @@ body{background:#fff}
 .inquiryForm textarea{width:100%;min-height:110px;border:1px solid #2a8cc8;padding:15px;font:inherit;resize:vertical}
 .formStatus{grid-column:1/-1;font-size:14px;color:#173c2b;min-height:20px}
 .inquiryForm label:focus-within{outline-offset:3px}
+
+/* Club photography — supplied by Linderhof */
+.hero{background-image:linear-gradient(180deg,rgba(4,25,19,.48),rgba(4,25,19,.12) 55%,rgba(4,25,19,.36)),url('/images/golf-mountain.jpg');background-position:center center}
+.pagehero{background-image:linear-gradient(180deg,rgba(4,25,19,.45),rgba(4,25,19,.12) 55%,rgba(4,25,19,.4)),url('/images/golf-aerial.jpg')}
+.membershipHero{background-image:linear-gradient(180deg,rgba(4,25,19,.45),rgba(4,25,19,.12) 55%,rgba(4,25,19,.4)),url('/images/golf-mountain.jpg')}
+.golfPhoto{background-image:url('/images/golf-aerial.jpg')}
+.poolPhoto{background-image:url('/images/pool.jpg')}
+.splitPhoto{background-image:url('/images/golf-fairway.jpg')}
+.amenitiesHero{background-image:linear-gradient(180deg,rgba(4,25,19,.45),rgba(4,25,19,.1) 55%,rgba(4,25,19,.4)),url('/images/pool.jpg')}
+.contactHero{background-image:linear-gradient(180deg,rgba(4,25,19,.5),rgba(4,25,19,.12) 55%,rgba(4,25,19,.4)),url('/images/entrance.jpg')}
+.galleryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:30px 0}.galleryGrid img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}.galleryGrid figcaption{font-size:12px;color:#68766c;margin-top:8px}.galleryGrid figure{margin:0}
+.inquiryPending{grid-column:2;line-height:1.8;color:#40564a}.inquiryPending a{display:inline-block;margin-top:8px;text-decoration:underline;font-weight:700}
+@media(max-width:700px){.galleryGrid{grid-template-columns:1fr}.inquiryPending{grid-column:1}}
