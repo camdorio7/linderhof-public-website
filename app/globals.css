@@ -140,3 +140,23 @@ img{max-width:100%}
 .inquiryStatus{font-size:13px;color:#153a30}
 @media(max-width:1050px){.inquiryForm{grid-template-columns:repeat(2,minmax(0,1fr))}.inquiryForm .inquiryInterest{grid-column:1/-1}}
 @media(max-width:680px){.inquiryForm{grid-template-columns:1fr}.inquiryForm .inquiryInterest{grid-column:1}.inquiryForm select{height:52px}.sectionActions a{flex:1 1 auto;text-align:center}}
+
+/* Homepage contact/inquiry section inspired by the supplied reference. */
+.homeContactPanel{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,90px);padding:clamp(55px,7vw,110px) max(5%,calc((100% - 1360px)/2));background:#fff;align-items:stretch}
+.homeContactDetails{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 20px}
+.homeContactDetails img{width:125px;height:155px;object-fit:contain;filter:drop-shadow(0 5px 9px rgba(0,0,0,.1))}
+.homeContactDetails h2{font-family:Georgia,serif;font-weight:400;color:#17392c;font-size:clamp(25px,2.5vw,39px);margin:16px 0 10px}
+.homeContactDetails p{font-size:17px;line-height:1.8;color:#485b50;margin:0 0 28px}
+.homeContactDetails a{font-size:13px;letter-spacing:1px;color:#245a42;border-bottom:1px solid #bba77b;padding:9px 0;text-decoration:none;margin:3px}
+.homeContactForm{border:1px solid #c9d3c6;background:#fafaf8;padding:clamp(28px,4vw,65px);text-align:center}
+.homeContactForm>h2{font-family:Georgia,serif;font-size:clamp(27px,2.7vw,42px);font-weight:400;color:#183b2d;margin:0 0 18px}
+.homeContactForm>p{font-size:17px;line-height:1.7;color:#405549;max-width:460px;margin:0 auto 26px}
+.homeContactForm .inquiry{display:block;padding:0;background:transparent;min-height:0;text-align:left}
+.homeContactForm .inquiryTitle{display:none}
+.homeContactForm .inquiryForm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.homeContactForm .inquiryForm .inquiryInterest{grid-column:1/-1}
+.homeContactForm .inquiryForm input,.homeContactForm .inquiryForm select{height:57px}
+.homeContactForm .inquiryForm button{grid-column:1/-1;justify-self:center;border-radius:40px;height:53px}
+.homeContactForm .inquiryNotice,.homeContactForm .inquiryStatus{grid-column:1/-1;text-align:center}
+@media(max-width:850px){.homeContactPanel{grid-template-columns:1fr;gap:24px;padding:45px 5%}.homeContactDetails{padding:20px 10px}.homeContactForm{padding:30px 5%}}
+@media(max-width:480px){.homeContactForm .inquiryForm{grid-template-columns:1fr}.homeContactForm .inquiryForm .inquiryInterest,.homeContactForm .inquiryForm button{grid-column:1}}
