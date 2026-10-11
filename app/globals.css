@@ -79,3 +79,8 @@ body{background:#fff}
 /* Transparent shield logo: no background or cropping */
 .centerLogo{overflow:visible!important;background:transparent!important}
 .crestLogo{display:block;object-fit:contain!important;object-position:center!important;background:transparent!important;border:0!important;border-radius:0!important;clip-path:none!important}
+
+/* New Linderhof aerial hero, while preserving the existing Kernwood-style layout. */
+.hero { background-image: linear-gradient(180deg,rgba(4,25,19,.24),rgba(4,25,19,.05) 55%,rgba(4,25,19,.34)),url('/images/linderhof-cinematic-background.png'); background-position:center; background-size:cover; }
+.lpoaHero { background-image:linear-gradient(180deg,rgba(4,25,19,.42),rgba(4,25,19,.13) 55%,rgba(4,25,19,.42)),url('/images/linderhof-cinematic-background.png'); }
+.lpoaContent a { color:var(--green); text-underline-offset:3px; }
