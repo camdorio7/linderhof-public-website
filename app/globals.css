@@ -216,3 +216,88 @@ img{max-width:100%}
 .aboutJoinActions{display:flex;gap:22px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:30px}
 .aboutJoinTextLink{font-size:12px;letter-spacing:1px;color:#fff;text-decoration:underline;text-underline-offset:6px}
 @media(max-width:680px){.aboutQuickLinks{grid-template-columns:1fr}.aboutSectionHeading{padding:40px 6% 30px}.aboutJoin{padding:60px 6%}}
+
+/* Final publication spacing system — October 2026. Keeps existing layout and branding. */
+:root{--site-section:clamp(38px,4.5vw,64px)}
+/* Compact, predictable vertical rhythm throughout the public pages. */
+.intro{padding:var(--site-section) 24px;max-width:900px}
+.intro h2{margin:10px 0 14px}
+.intro>p:not(.eyebrow){margin:14px auto 24px;line-height:1.7}
+.featureSection{padding:var(--site-section) max(5%,calc((100% - 1280px)/2))}
+.sectionHead{margin-bottom:24px;gap:20px}
+.sectionHead h2{margin-top:6px}
+.sectionHead>p{margin:0;line-height:1.65}
+.featureGrid{gap:18px}
+.featureImg{height:clamp(210px,23vw,300px)}
+.featureBody{padding:20px 22px 23px}
+.featureBody h3{margin:0 0 14px;line-height:1.35}
+.splitFeature,.editorial{min-height:0}
+.splitPhoto,.editorialPhoto{min-height:clamp(330px,35vw,460px)}
+.splitText,.editorialCopy{padding:clamp(38px,5vw,70px)}
+.splitText h2,.editorialCopy h2{margin:10px 0 16px;line-height:1.3}
+.splitText p:not(.eyebrow),.editorialCopy p:not(.eyebrow){margin:0 0 22px;line-height:1.7}
+.closing{padding:var(--site-section) 20px}
+.closing h2{margin:10px 0 15px;line-height:1.3}
+.closing p:not(.eyebrow){margin:0 auto 24px;max-width:700px;line-height:1.65}
+.homeContactPanel{padding-top:var(--site-section);padding-bottom:var(--site-section);gap:clamp(24px,4vw,56px)}
+.homeContactDetails{padding:15px}
+.homeContactDetails p{margin-bottom:16px;line-height:1.6}
+.homeContactForm{padding:clamp(24px,3vw,42px)}
+.homeContactForm>h2{margin-bottom:10px}
+.homeContactForm>p{margin-bottom:20px;line-height:1.6}
+.homeContactForm .inquiryForm{gap:13px}
+.homeContactForm .inquiryForm input,.homeContactForm .inquiryForm select{height:51px}
+.footer{padding:42px 7% 25px;gap:24px}
+.pagehero{min-height:0;padding:clamp(265px,24vw,315px) 6% 48px}
+.pagehero h1{margin:8px 0 12px}
+.pagehero p:not(.eyebrow){line-height:1.55}
+.interiorShell{padding-top:var(--site-section);padding-bottom:var(--site-section);gap:clamp(24px,3.5vw,48px)}
+.interiorTitle{margin:5px 0 15px}
+.interiorBody{line-height:1.75}
+.interiorBody p{margin-bottom:15px}
+.interiorBody h3{margin:24px 0 10px}
+.interiorSidebar nav a{padding:12px 0}
+.interiorSidebarLabel{margin-bottom:12px}
+.interiorSidebarNote{margin-top:20px;padding:18px}
+.interiorSplit{min-height:0}
+.interiorSplitPhoto{min-height:clamp(280px,32vw,400px)}
+.interiorSplitText{padding:clamp(30px,4vw,56px)}
+.interiorSplitText h2{margin:8px 0 14px}
+.interiorSplitText p:not(.eyebrow){line-height:1.7;margin:0 0 18px}
+.sectionActions{margin:14px 0 18px}
+.membershipSection,.socialSection,.announcementsSection{padding-top:var(--site-section);padding-bottom:var(--site-section)}
+.membershipCards,.policyGrid{margin-top:18px;margin-bottom:24px}
+.policyGrid{gap:18px}
+.socialGrid{gap:18px}
+.socialPanel{padding:24px}
+.socialPanel h2{margin:8px 0 14px}
+.facebookFeature{gap:clamp(20px,3vw,42px)}
+.aboutSectionHeading{padding:var(--site-section) 6% 28px}
+.aboutSectionHeading h2{margin:8px 0 12px}
+.aboutPage .interiorSplit{min-height:0}
+.aboutJoin{padding:var(--site-section) 7%}
+.aboutJoin h2{margin:12px 0 15px}
+.aboutJoinActions{margin-top:22px}
+/* Anchor destinations remain visible beneath the site masthead. */
+#membership-inquiry{scroll-margin-top:24px}
+@media(max-width:800px){
+ .pagehero{padding:255px 6% 40px}
+ .intro,.featureSection,.closing{padding-top:42px;padding-bottom:42px}
+ .sectionHead{margin-bottom:20px}
+ .featureGrid{gap:14px}
+ .interiorShell{padding:38px 6% 44px;gap:22px}
+ .interiorSplitPhoto{min-height:270px}
+ .interiorSplitText,.splitText,.editorialCopy{padding:36px 7%}
+ .homeContactPanel{padding:40px 5%;gap:16px}
+ .homeContactDetails{padding:10px}
+ .aboutJoin{padding:46px 6%}
+}
+@media(max-width:680px){
+ .pagehero{padding:280px 6% 36px}
+ .featureImg{height:240px}
+ .featureBody{padding:18px}
+ .homeContactForm{padding:24px 5%}
+ .homeContactForm .inquiryForm{gap:12px}
+ .footer{padding:35px 6% 24px}
+ .aboutSectionHeading{padding:38px 6% 24px}
+}
