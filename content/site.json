@@ -42,5 +42,35 @@
       "name": "Social",
       "price": "$65"
     }
-  ]
+  ],
+  "photoLibrary": [
+    {
+      "label": "Cinematic golf background",
+      "url": "/images/linderhof-cinematic-background.png"
+    },
+    {
+      "label": "Golf Aerial",
+      "url": "/images/golf-aerial.jpg"
+    },
+    {
+      "label": "Golf Mountain",
+      "url": "/images/golf-mountain.jpg"
+    },
+    {
+      "label": "Golf Fairway",
+      "url": "/images/golf-fairway.jpg"
+    },
+    {
+      "label": "Pool",
+      "url": "/images/pool.jpg"
+    },
+    {
+      "label": "Entrance",
+      "url": "/images/entrance.jpg"
+    }
+  ],
+  "lpoaAbout": "Chartered in 1978, the Linderhof Property Owners Association (LPOA) is a domestic non-profit corporation comprised of the owners of condominiums in the Linderhof Country Club area.",
+  "lpoaArea": "The area is located in the heart of the White Mountains in Mount Washington Valley. It is a most sought after location for year round vacationing and relaxation offering first class skiing, golfing, hiking, mountain climbing, water kayaking and rafting, and shopping.",
+  "lpoaPhone": "603-383-4238",
+  "mountainsidePhone": "603-383-9442"
 }
