@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function Success(){return <main><section className="pagehero"><h1>Checkout Complete</h1></section><article className="content"><h2>Thank you</h2><p>If your payment succeeded, Stripe will send your receipt. Please contact the club with any order questions.</p><p>Order fulfillment must be verified against Stripe payment records before merchandise is released.</p><Link className="button" href="/shop">Back to Shop</Link></article></main>}

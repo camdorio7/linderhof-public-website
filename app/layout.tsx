@@ -1,0 +1,5 @@
+import './globals.css';
+import Link from 'next/link';
+export const metadata={title:'Linderhof Country Club | Glen, NH',description:'Golf, membership, recreation, news and events in Glen, New Hampshire.'};
+const pages=[['Membership','/membership'],['Golf & Policies','/golf'],['Amenities','/amenities'],['LPOA','/lpoa'],['News & Events','/events'],['Shop','/shop'],['Pool & Golf Passes','/passes']];
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><header className="header"><Link href="/" className="brand">LINDERHOF COUNTRY CLUB<small>GLEN · NEW HAMPSHIRE</small></Link><nav className="nav">{pages.map(([name,path])=><Link key={path} href={path}>{name}</Link>)}<a className="button" href="https://linderhofmembers.com">Member Sign In ↗</a></nav></header>{children}<footer className="footer"><div><strong>LINDERHOF COUNTRY CLUB</strong><p>10 Clubhouse Road · Glen, NH 03838</p></div><div><Link href="/contact">Contact</Link> · <a href="https://linderhofmembers.com">LINDEX Member Portal ↗</a><p>© {new Date().getFullYear()} Linderhof Country Club</p></div></footer></body></html>}

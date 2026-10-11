@@ -1,0 +1,2 @@
+export const metadata={title:'LPOA'+' | Linderhof Country Club'};
+export default function Page(){return <main><section className="pagehero"><div className="eyebrow">Community</div><h1>LPOA</h1></section><article className="content"><h2>Linderhof Property Owners Association</h2><p>This section is reserved for public LPOA information, association contacts, and approved notices.</p><p className="note">Private owner records and restricted documents should remain in their existing access-controlled system rather than on the public website.</p></article></main>}
