@@ -423,3 +423,27 @@ body{overflow-x:hidden}
  .interiorShell.interiorShellFull{padding:38px 6% 48px}
 }
 @media(prefers-reduced-motion:reduce){.heroScrollCue:hover .heroScrollArrow{transition:none}}
+
+/* October 2026: final hero polish — balanced crest, typography and scroll cue. */
+@media(min-width:701px){
+ .kernHeader .crestLogo{width:clamp(112px,9.2vw,152px)!important;height:auto!important;object-fit:contain!important}
+ .kernHeader .centerLogo{min-height:0!important}
+ .hero{padding-top:66px!important;padding-bottom:112px!important}
+ .heroInner{max-width:830px!important}
+ .hero .eyebrow.light{margin-bottom:8px!important}
+ .hero h1{margin:8px auto 10px!important;line-height:1.1!important}
+ .hero .fineLine{margin:10px auto!important}
+ .hero p:not(.eyebrow){margin:10px auto 0!important;line-height:1.45!important}
+ .heroScrollCue{bottom:34px!important;gap:2px!important}
+ .heroScrollArrow{font-size:66px!important;line-height:1!important}
+}
+@media(max-width:700px){
+ .heroInner{max-width:560px!important}
+ .hero .eyebrow.light{margin-bottom:8px!important}
+ .hero h1{margin:8px auto!important}
+ .hero .fineLine{margin:10px auto!important}
+ .hero p:not(.eyebrow){margin:10px auto 0!important}
+ .heroScrollCue{bottom:max(22px,env(safe-area-inset-bottom))!important;gap:2px!important}
+ .heroScrollArrow{font-size:54px!important}
+}
+.heroScrollCue:focus-visible{outline:2px solid #fff;outline-offset:7px;border-radius:3px}
