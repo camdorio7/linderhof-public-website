@@ -15,7 +15,14 @@
   "golfImage": "/images/linderhof-cinematic-background.png",
   "poolImage": "/images/pool.jpg",
   "membershipNote": "The official 2027 membership guide governs rates, eligibility, discounts and policies.",
-  "events": [],
+  "events": [
+    {
+      "title": "Holiday Artisan Market",
+      "date": "2026-12-05",
+      "description": "Join us at Linderhof Country Club’s Holiday Artisan Market, December 5th from 10am to 4pm, to browse unique gifts, support local artisans, and find something special for your holiday list—or yourself! 🎁\n\n📍 10 Clubhouse Rd, Glen, NH 03838\n\nOpen to the public—everyone is welcome! Come enjoy the holiday spirit and shop small this season.",
+      "link": ""
+    }
+  ],
   "facebookUrl": "https://www.facebook.com/LinderhofCountryClub/",
   "membershipRates": [
     {
