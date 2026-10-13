@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import {InteriorLayout} from '../InteriorLayout';
 import { getLindexEvents } from '../../lib/lindex-events';
 import site from '../../content/site.json';
