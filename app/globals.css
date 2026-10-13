@@ -468,3 +468,12 @@ body{overflow-x:hidden}
 .eventTile>a:last-child{margin-top:4px;font-size:13px;font-weight:650}
 @media(max-width:960px){.eventTileGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
 @media(max-width:600px){.eventTileGrid{grid-template-columns:minmax(0,1fr);gap:16px}.eventTile{padding:14px}.eventTile .eventFlyerImage{max-height:520px}.eventTile h3{font-size:21px}}
+
+/* Shared live event tiles and publication credit */
+.homeEventsSection{padding:clamp(38px,5vw,72px) 24px;background:#f8f7f3}
+.homeEventsSection .announcementsInner{max-width:1250px;margin:0 auto}
+.homeEventsSection h2{margin:8px 0 26px}
+.homeEventsMore{display:flex;justify-content:center;margin-top:30px}
+.footerPowered{color:inherit;text-decoration:none;opacity:.84;font-size:13px}
+.footerPowered:hover{text-decoration:underline;opacity:1}
+@media(max-width:600px){.homeEventsSection{padding:35px 16px}.homeEventsMore .button{width:100%;text-align:center}}

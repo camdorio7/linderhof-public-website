@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 import {InteriorLayout} from '../InteriorLayout';
 import { getLindexEvents } from '../../lib/lindex-events';
 import site from '../../content/site.json';
+import EventTile from '../EventTile';
 import Link from 'next/link';
 
 export const metadata = {
@@ -9,14 +10,11 @@ export const metadata = {
   description: 'See Linderhof Country Club announcements, tournaments, photographs and community events on our official Facebook page.',
 };
 
-type ClubEvent = { title: string; date: string; description: string; link?: string };
-const clubEvents: ClubEvent[] = site.events as ClubEvent[];
 const FACEBOOK_URL = site.facebookUrl;
 const FACEBOOK_EMBED = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(FACEBOOK_URL)}&tabs=timeline&width=500&height=650&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false`;
 
 export default async function Page() {
   const lindex = await getLindexEvents();
-  const localEvents = clubEvents;
 
   return <main>
     <section className="pagehero eventsHero">
@@ -29,19 +27,11 @@ export default async function Page() {
     </InteriorLayout>
     <section id="club-events" className="announcementsSection"><div className="announcementsInner">
       <p className="eyebrow">UPCOMING & RECENT</p><h2>Club Events</h2>
-      {lindex.events.length===0 && localEvents.length===0 ? <p>{lindex.connected ? 'No public events are currently scheduled. Check back soon or visit LINDEX for member events.' : 'For the latest event details, visit LINDEX or our Facebook page.'}</p> :
+      {lindex.events.length===0 ? <p>{lindex.connected ? 'No public events are currently scheduled. Check back soon or visit LINDEX for member events.' : 'For the latest event details, visit LINDEX or our Facebook page.'}</p> :
       <div className="announcementGrid eventTileGrid">
-        {lindex.events.map(item=><article className="announcementCard eventTile" key={`lindex-${item.id}`}>
-          {item.image_url && /^https:\/\//i.test(item.image_url) && <a className="eventFlyerLink" href={item.image_url} target="_blank" rel="noopener noreferrer" aria-label={`View full flyer for ${item.title}`}><img className="eventFlyerImage" src={item.image_url} alt={`${item.title} event flyer`} loading="lazy" /><span className="eventFlyerHint">View full flyer ↗</span></a>}
-          <time dateTime={item.event_date}>{new Date(`${item.event_date}T12:00:00`).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'America/New_York'})}{item.event_time ? ` · ${item.event_time.slice(0,5)}` : ''}</time>
-          <h3>{item.title}</h3>
-          {item.location && <p><strong>{item.location}</strong></p>}
-          {item.description && <p className="eventTileDescription">{item.description}</p>}
-          <a href="https://linderhofmembers.com/?iosPage=events" target="_blank" rel="noopener noreferrer">Details in LINDEX ↗</a>
-        </article>)}
-        {localEvents.map((item,i)=><article className="announcementCard" key={`website-${i}`}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p className="eventTileDescription">{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Details ↗</a>}</article>)}
+        {lindex.events.map(item=><EventTile item={item} key={item.id}/>)}
       </div>}
-    </div></section><section id="club-announcements" className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2><div className="announcementGrid">{site.announcements.map((item,i)=><article className="announcementCard" key={i}><time dateTime={item.date}>{item.date}</time><h3>{item.title}</h3><p className="eventTileDescription">{item.description}</p>{item.link&&<a href={item.link} target="_blank" rel="noopener noreferrer">Learn more ↗</a>}</article>)}</div></div></section>
+    </div></section>    <section id="club-announcements" className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2>{lindex.announcements.length ? <div className="announcementGrid">{lindex.announcements.map(item=><article className="announcementCard" key={item.id}><time dateTime={item.created_at}>{new Date(item.created_at).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'America/New_York'})}</time><h3>{item.title}</h3><p>{item.message}</p></article>)}</div> : <p>{lindex.connected?'No public announcements at the moment.':'Club announcements are temporarily unavailable. Please check LINDEX for updates.'}</p>}</div></section>
     <section className="socialSection" aria-labelledby="facebook-heading">
       <div className="facebookFeature">
         <div className="facebookFeatureCopy">
