@@ -16,6 +16,7 @@ const features = [
 
 export default async function Home() {
   const lindex = await getLindexEvents();
+  const featuredEvents = lindex.events.slice(0, 3);
 
   return (
     <main>
@@ -66,20 +67,18 @@ export default async function Home() {
         <div className="announcementsInner">
           <p className="eyebrow">UPCOMING AT LINDERHOF</p>
           <h2 id="home-events-heading">Club Events</h2>
-          <div className="eventMembershipLayout">
-            <div className="eventMembershipEvents">
-              {lindex.events.length ? (
-                <div className="announcementGrid eventTileGrid">
-                  {lindex.events.slice(0, 3).map((item) => <EventTile key={item.id} item={item} />)}
-                </div>
-              ) : (
+          <div className={`eventShowcase eventShowcase--${featuredEvents.length === 1 ? 'single' : featuredEvents.length === 2 ? 'pair' : featuredEvents.length === 3 ? 'trio' : 'empty'}`}>
+            {featuredEvents.length ? (
+              featuredEvents.map((item) => <EventTile key={item.id} item={item} />)
+            ) : (
+              <div className="eventShowcaseEmpty">
                 <p>{lindex.connected ? 'No upcoming public events are scheduled.' : 'Visit News & Events for the latest club activities.'}</p>
-              )}
-              <div className="homeEventsMore">
-                <Link className="button dark" href="/events">VIEW MORE EVENTS ↗</Link>
               </div>
-            </div>
+            )}
             <SocialMembershipCard />
+          </div>
+          <div className="homeEventsMore">
+            <Link className="button dark" href="/events">VIEW MORE EVENTS ↗</Link>
           </div>
         </div>
       </section>

@@ -521,3 +521,114 @@ body{overflow-x:hidden}
 @media(max-width:1050px){.eventMembershipLayout{grid-template-columns:minmax(0,1fr) 260px}.eventMembershipLayout .eventTileGrid{gap:14px}.socialMembershipCardTop{padding:24px 20px 16px}.socialMembershipCardBottom{padding:18px 20px 22px}}
 @media(max-width:900px){.eventMembershipLayout{grid-template-columns:1fr}.socialMembershipCard{max-width:100%;display:grid;grid-template-columns:1fr 1fr}.socialMembershipCardBottom{border-top:0;border-left:1px solid #cdd9ce;padding:24px}.eventMembershipLayout .eventTileGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.eventMembershipLayout .eventTileGrid{grid-template-columns:1fr}.socialMembershipCard{display:block}.socialMembershipCardBottom{border-left:0;border-top:1px solid #cdd9ce}.clubhouseHoursGrid{grid-template-columns:1fr}.homeHoursBand{padding:25px 16px}.clubhouseHours{padding:22px 20px}.membershipCheckoutCallout{display:block;padding:20px}.membershipCheckoutCallout .button{margin-top:18px;width:100%}}
+
+/* Event + membership layout refresh: the grid adapts to the ACTUAL number of events.
+   No empty event slots; membership checkout is a distinct, clearly labelled card. */
+.eventShowcase{
+  display:grid;
+  gap:clamp(16px,2.2vw,26px);
+  align-items:start;
+  min-width:0;
+}
+.eventShowcase--single,.eventShowcase--empty{
+  grid-template-columns:minmax(0,1.85fr) minmax(290px,.95fr);
+}
+.eventShowcase--pair,.eventShowcase--many{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.eventShowcase--trio{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.eventShowcase .eventTile{
+  width:100%;height:100%;min-width:0;
+  padding:18px;
+  gap:14px;
+  border:1px solid #e3e6df;
+  border-radius:6px;
+  box-shadow:0 5px 22px rgba(21,42,32,.045);
+}
+.eventTileContent{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0;flex:1}
+.eventTileContent time{color:#627468;font-size:12px;letter-spacing:.055em}
+.eventTileContent h3{font-size:clamp(20px,1.75vw,25px);line-height:1.28;margin:0}
+.eventTileContent p{margin:0;font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+.eventTileContent .eventTileDescription{-webkit-line-clamp:4}
+.eventTileContent .eventTileDetailsLink{
+  margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.025em;
+  color:#1b5036;text-decoration:underline;text-underline-offset:4px;
+}
+.eventShowcase .eventFlyerLink{display:block;margin:0;text-align:center;min-width:0}
+.eventShowcase .eventFlyerImage{display:block;width:100%;height:auto;max-height:400px;object-fit:contain;object-position:center;background:transparent}
+.eventShowcase .eventFlyerHint{display:block;margin-top:10px;font-size:11px;letter-spacing:.055em}
+.eventShowcase--single .eventTile,
+.eventShowcase--trio .eventTile{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1fr);
+  align-items:start;
+  gap:clamp(16px,2vw,26px);
+}
+.eventShowcase--single .eventTile{padding:22px}
+.eventShowcase--single .eventTile--noFlyer,.eventShowcase--trio .eventTile--noFlyer{display:flex;flex-direction:column}
+.eventShowcase--single .eventFlyerImage{max-height:480px}
+.eventShowcase--single .eventTileContent{padding-top:5px}
+.eventShowcase--single .eventTileContent h3{font-size:clamp(22px,2.1vw,30px)}
+.eventShowcase--trio .eventFlyerImage{max-height:380px}
+.eventShowcaseEmpty{display:flex;align-items:center;justify-content:center;min-height:200px;padding:28px;border:1px solid #e1e5dd;background:#fff;color:#4f6658}
+.eventShowcaseEmpty p{margin:0;line-height:1.7}
+.homeEventsSection .homeEventsMore{justify-content:center;margin-top:26px}
+
+/* Social Membership: shorter, better-proportioned card, distinct from event registration. */
+.eventShowcase .socialMembershipCard{
+  align-self:start;min-width:0;
+  border:1px solid #d4ddd3;
+  background:#eaf0e9;
+  box-shadow:0 5px 22px rgba(21,42,32,.055);
+  border-radius:6px;
+}
+.eventShowcase .socialMembershipCardTop{padding:26px 25px 18px}
+.eventShowcase .socialMembershipCardBottom{padding:18px 25px 24px}
+.eventShowcase .socialMembershipCard .eyebrow{font-size:10px;letter-spacing:2.1px;margin:0 0 12px}
+.eventShowcase .socialMembershipCard h3{font-size:clamp(22px,2vw,28px);line-height:1.34;margin:0 0 12px}
+.eventShowcase .socialMembershipCardTop>p:last-child{font-size:13px;line-height:1.65;color:#3e5b4b}
+.eventShowcase .socialMembershipPrice{display:flex;align-items:center;justify-content:space-between;gap:12px;letter-spacing:.015em;text-transform:none}
+.eventShowcase .socialMembershipPrice span{font-size:12px;font-weight:700;line-height:1.45}
+.eventShowcase .socialMembershipPrice strong{font-size:clamp(22px,2.1vw,28px);white-space:nowrap}
+.eventShowcase .socialMembershipNote{font-size:12px!important;line-height:1.55!important;margin:11px 0 15px!important}
+.eventShowcase .socialMembershipCheckout{
+  font-size:11px;line-height:1.45;letter-spacing:.045em;padding:15px 14px;
+  border-radius:3px;
+}
+.eventShowcase .socialMembershipCheckoutNote{font-size:11px!important;line-height:1.6!important;margin:11px 0 14px!important}
+.eventShowcase .socialMembershipLearn{font-size:12px}
+.eventShowcase a:focus-visible{outline:3px solid #a98f57;outline-offset:4px}
+
+@media(max-width:1100px){
+  .eventShowcase--single,.eventShowcase--empty{grid-template-columns:minmax(0,1.6fr) minmax(275px,1fr)}
+  .eventShowcase--trio .eventTile{grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}
+}
+@media(max-width:900px){
+  .eventShowcase--single,.eventShowcase--empty{grid-template-columns:minmax(0,1fr)}
+  .eventShowcase--single .eventTile{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}
+  .eventShowcase--single .eventFlyerImage{max-height:390px}
+  .eventShowcase--pair,.eventShowcase--many,.eventShowcase--trio{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .eventShowcase--trio .eventTile{grid-template-columns:1fr}
+  .eventShowcase .socialMembershipCard{display:block}
+  .eventShowcase .socialMembershipCardBottom{border-top:1px solid #cdd9ce;border-left:0}
+  .eventShowcase--single .socialMembershipCard,
+  .eventShowcase--empty .socialMembershipCard,
+  .eventShowcase--pair .socialMembershipCard{display:grid;grid-template-columns:1fr 1fr;grid-column:1 / -1}
+  .eventShowcase--single .socialMembershipCardBottom,
+  .eventShowcase--empty .socialMembershipCardBottom,
+  .eventShowcase--pair .socialMembershipCardBottom{border-top:0;border-left:1px solid #cdd9ce}
+}
+@media(max-width:700px){
+  .eventShowcase--single,.eventShowcase--empty,.eventShowcase--pair,.eventShowcase--many,.eventShowcase--trio{grid-template-columns:minmax(0,1fr)}
+  .eventShowcase--single .eventTile,.eventShowcase--trio .eventTile{grid-template-columns:minmax(0,1fr)}
+  .eventShowcase--pair .socialMembershipCard{display:block;grid-column:auto}
+  .eventShowcase--pair .socialMembershipCardBottom{border-left:0;border-top:1px solid #cdd9ce}
+  .eventShowcase .socialMembershipCard{display:block;grid-template-columns:none}
+  .eventShowcase .socialMembershipCardBottom{border-left:0;border-top:1px solid #cdd9ce}
+  .eventShowcase .eventFlyerImage{max-height:470px}
+  .eventShowcase .eventTile{padding:16px}
+  .eventShowcase .socialMembershipCardTop{padding:23px 22px 16px}
+  .eventShowcase .socialMembershipCardBottom{padding:18px 22px 22px}
+}

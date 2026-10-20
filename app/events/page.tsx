@@ -30,16 +30,14 @@ export default async function Page() {
       <div className="announcementsInner">
         <p className="eyebrow">UPCOMING &amp; RECENT</p>
         <h2>Club Events</h2>
-        <div className="eventMembershipLayout">
-          <div className="eventMembershipEvents">
-            {lindex.events.length === 0 ? (
+        <div className={`eventShowcase eventShowcase--${lindex.events.length === 1 ? 'single' : lindex.events.length === 2 ? 'pair' : lindex.events.length === 3 ? 'trio' : lindex.events.length > 3 ? 'many' : 'empty'}`}>
+          {lindex.events.length === 0 ? (
+            <div className="eventShowcaseEmpty">
               <p>{lindex.connected ? 'No public events are currently scheduled. Check back soon or visit LINDEX for member events.' : 'For the latest event details, visit LINDEX or our Facebook page.'}</p>
-            ) : (
-              <div className="announcementGrid eventTileGrid">
-                {lindex.events.map((item) => <EventTile item={item} key={item.id} />)}
-              </div>
-            )}
-          </div>
+            </div>
+          ) : (
+            lindex.events.map((item) => <EventTile item={item} key={item.id} />)
+          )}
           <SocialMembershipCard />
         </div>
       </div>
