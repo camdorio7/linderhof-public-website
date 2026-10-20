@@ -2,7 +2,7 @@
 import {useEffect,useState} from 'react';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-const primary=[['/about','ABOUT US'],['/golf','GOLF'],['/membership','MEMBERSHIP'],['/amenities','POOL & LIFESTYLE'],['/events','NEWS & EVENTS'],['/lpoa','LPOA']];
+const primary=[['/about','ABOUT US'],['/golf','GOLF'],['/membership','MEMBERSHIP'],['/amenities','POOL & LIFESTYLE'],['/events','NEWS & EVENTS'],['/lpoa','LPOA'],['/shop','PRO SHOP']];
 const secondary=[['/contact','Guest Information'],['/contact','Contact & Directions'],['/membership#membership-inquiry','Membership Inquiries']];
 export default function MobileNavigation(){
  const [open,setOpen]=useState(false);const pathname=usePathname();
