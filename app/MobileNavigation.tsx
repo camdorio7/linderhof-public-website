@@ -11,6 +11,7 @@ const primary = [
   ['/amenities', 'POOL & AMENITIES'],
   ['/events', 'NEWS & EVENTS'],
   ['/lpoa', 'LPOA'],
+  ['/sponsors', 'OUR SPONSORS'],
   ['/shop', 'PRO SHOP'],
 ];
 const secondary = [

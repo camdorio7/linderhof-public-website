@@ -72,5 +72,47 @@
   "lpoaAbout": "Chartered in 1978, the Linderhof Property Owners Association (LPOA) is a domestic non-profit corporation comprised of the owners of condominiums in the Linderhof Country Club area.",
   "lpoaArea": "The area is located in the heart of the White Mountains in Mount Washington Valley. It is a most sought after location for year round vacationing and relaxation offering first class skiing, golfing, hiking, mountain climbing, water kayaking and rafting, and shopping.",
   "lpoaPhone": "603-383-4238",
-  "mountainsidePhone": "603-383-9442"
+  "mountainsidePhone": "603-383-9442",
+  "sponsors": [
+    {
+      "name": "SKS Group Boston",
+      "image": "/images/sponsors/sks-group-boston.webp",
+      "link": "http://sksgroupboston.com"
+    },
+    {
+      "name": "White Mountain Oil and Propane",
+      "image": "/images/sponsors/white-mountain-oil-and-propane.webp",
+      "link": ""
+    },
+    {
+      "name": "Infinger Insurance",
+      "image": "/images/sponsors/infinger-insurance.webp",
+      "link": "https://infingerinsurance.com/"
+    },
+    {
+      "name": "White Mountain Stove Shop",
+      "image": "/images/sponsors/white-mountain-stove-shop.webp",
+      "link": "https://wmstoveshop.com/"
+    },
+    {
+      "name": "Andes Ski Shop",
+      "image": "/images/sponsors/andes-ski-shop.webp",
+      "link": "https://andesski.shop/"
+    },
+    {
+      "name": "The Original Cigar Bar",
+      "image": "/images/sponsors/the-original-cigar-bar.webp",
+      "link": "https://www.facebook.com/TheOriginalCigarBar/"
+    },
+    {
+      "name": "The Red Parka Pub",
+      "image": "/images/sponsors/the-red-parka-pub.webp",
+      "link": "https://www.redparkapub.com/"
+    },
+    {
+      "name": "Truly, Truly Clean",
+      "image": "/images/sponsors/truly-truly-clean.webp",
+      "link": "https://trulytrulyclean.com/"
+    }
+  ]
 }

@@ -11,6 +11,10 @@ for(const item of content.events){if(typeof item.title!=='string'||typeof item.d
 for(const rate of content.membershipRates){if(typeof rate.name!=='string'||typeof rate.price!=='string'||rate.name.length>150||rate.price.length>30)return NextResponse.json({error:'Invalid membership rate'},{status:400})}
 if(!Array.isArray(content.photoLibrary)||content.photoLibrary.length>100)return NextResponse.json({error:'Invalid photo library'},{status:400});
 const validPhoto=(url:unknown)=>typeof url==='string'&&url.length<200&&/^\/images\/[a-zA-Z0-9/_-]+\.(jpg|jpeg|png|webp)$/.test(url)&&!url.includes('..');
+if (!Array.isArray(content.sponsors) || content.sponsors.some((s: {name:string;image:string;link:string}) =>
+  !s || typeof s.name !== 'string' || !s.name.trim() || s.name.length > 120 || !validPhoto(s.image) ||
+  typeof s.link !== 'string' || s.link.length > 1000 || (s.link && !/^https?:\/\/[^\s/]+(?:[/?#][^\s]*)?$/i.test(s.link))
+)) return NextResponse.json({error:'Each sponsor needs a name, a logo, and a valid website address if provided.'},{status:400});
 for(const photo of content.photoLibrary){if(!photo||typeof photo.label!=='string'||photo.label.length>120||!validPhoto(photo.url))return NextResponse.json({error:'Invalid photo library item'},{status:400})}
 for(const key of ['heroImage','golfImage','poolImage']){if(!validPhoto(content[key])||!content.photoLibrary.some((p:{url:string})=>p.url===content[key]))return NextResponse.json({error:'Invalid photo selection'},{status:400})}
 for(const key of ['lpoaAbout','lpoaArea']){if(typeof content[key]!=='string'||content[key].length>2500)return NextResponse.json({error:'Invalid LPOA information'},{status:400})}
