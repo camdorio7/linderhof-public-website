@@ -694,7 +694,32 @@ body{overflow-x:hidden}
   .kernHeader {display:none !important;}
 }
 
-.sponsorGrid { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
-.sponsorGrid li { background: white; border: 1px solid #d9dfd9; }
-.sponsorGrid li > * { display: grid; padding: 1rem; gap: 1rem; text-align: center; color: inherit; }
-.sponsorGrid img { width: 100%; height: 150px; object-fit: contain; }
+.pagehero.sponsorsHero {
+  background: linear-gradient(180deg,rgba(6,31,23,.85),rgba(6,31,23,.58)), url('/images/golf-mountain.jpg') center / cover;
+  color: white;
+}
+.sponsorGrid {
+  list-style: none;
+  width: 90%;
+  max-width: 1120px;
+  margin: clamp(28px,5vw,68px) auto;
+  padding: 0;
+  display: grid;
+  gap: clamp(14px,2vw,24px);
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+.sponsorGrid li { display: flex; min-width: 0; background: white; border: 1px solid #d9dfd9; }
+.sponsorGrid li > * { flex: 1; min-width: 0; display: grid; align-content: start; gap: 18px; padding: 24px; text-align: center; color: #193f30; }
+.sponsorGrid img { display: block; width: 100%; height: 128px; object-fit: contain; }
+.sponsorGrid strong { font-size: 17px; line-height: 1.35; }
+.sponsorGrid a:focus-visible { outline: 3px solid #956f32; outline-offset: 2px; }
+@media (max-width: 900px) {
+  .sponsorGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 700px) {
+  .pagehero.sponsorsHero { min-height: 0 !important; padding: 52px 6% !important; }
+}
+@media (max-width: 520px) {
+  .sponsorGrid { grid-template-columns: minmax(0,1fr); }
+  .sponsorGrid img { height: 110px; }
+}
