@@ -22,6 +22,9 @@ export default async function Contact() {
           <a className="button dark" href="https://www.google.com/maps/search/?api=1&query=10+Clubhouse+Road+Glen+NH+03838" target="_blank" rel="noopener noreferrer">GET DIRECTIONS ↗</a>
         </p>
         <ClubhouseHours hours={clubhouseHours} />
+        <h3>Renter guest passes</h3>
+        <p>Renting a Linderhof condo? Register for a pool or golf guest pass through LINDEX.</p>
+        <p><a className="button dark" href="https://linderhofmembers.com/guest-passes">Register for a renter guest pass ↗</a></p>
         <p>For membership information, please use the inquiry section below.</p>
       </InteriorLayout>
       <InteriorSplit image="/images/entrance.jpg" alt="Linderhof Country Club entrance sign" eyebrow="WELCOME TO LINDERHOF" title="A Place to Gather">

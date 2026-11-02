@@ -15,7 +15,7 @@ const primary = [
   ['/shop', 'PRO SHOP'],
 ];
 const secondary = [
-  ['/contact', 'Guest Information'],
+  ['/passes', 'Guest & Renter Passes'],
   ['/contact', 'Contact & Directions'],
   ['/membership#membership-inquiry', 'Membership Inquiries'],
 ];

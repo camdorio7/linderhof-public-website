@@ -1,0 +1,44 @@
+{
+  "title": "2027 Membership",
+  "intro": "Golf, recreation and community in the White Mountains.",
+  "note": "The official 2027 membership guide governs rates, eligibility, discounts and policies.",
+  "checkout": "https://checkout.square.site/merchant/MLX9MPKYV3RZ6/checkout/YJBLQUM2GRBBVEVKSR53PFD5",
+  "plans": [
+    {
+      "name": "Full Week Couple/Family",
+      "price": "$985",
+      "access": "Unlimited golf, pool and clubhouse, seven days a week",
+      "details": "Includes the couple\u2019s minor children under 18. 5% discount if paid by February 28, 2027."
+    },
+    {
+      "name": "Full Week Individual",
+      "price": "$600",
+      "access": "Unlimited golf, pool and clubhouse, seven days a week",
+      "details": "5% discount if paid by February 28, 2027."
+    },
+    {
+      "name": "Full Week Individual \u2014 Senior 65+ / Veterans",
+      "price": "$540",
+      "access": "Unlimited golf, pool and clubhouse, seven days a week",
+      "details": "10% off; identification required. No additional discounts."
+    },
+    {
+      "name": "Full Week Individual \u2014 Group Rate",
+      "price": "$525",
+      "access": "Unlimited golf, pool and clubhouse, seven days a week",
+      "details": "Per person; groups of eight or more paid in one transaction."
+    },
+    {
+      "name": "Junior Golf (under 18)",
+      "price": "$100",
+      "access": "Unlimited golf, seven days a week. No pool access.",
+      "details": "Complimentary pushcart. No discounts."
+    },
+    {
+      "name": "Social",
+      "price": "$65",
+      "access": "Clubhouse access only during opening hours",
+      "details": "Per individual. No golf or pool access. No discounts."
+    }
+  ]
+}
