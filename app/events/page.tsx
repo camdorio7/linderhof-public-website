@@ -2,6 +2,8 @@ export const dynamic = 'force-dynamic';
 import {InteriorLayout} from '../InteriorLayout';
 import { getLindexEvents } from '../../lib/lindex-events';
 import site from '../../content/site.json';
+import ClubSpecials, { isClubSpecial } from '../ClubSpecials';
+import { readMembership } from '../../lib/public-membership';
 import EventTile from '../EventTile';
 import SocialMembershipCard from '../SocialMembershipCard';
 import Link from 'next/link';
@@ -15,7 +17,9 @@ const FACEBOOK_URL = site.facebookUrl;
 const FACEBOOK_EMBED = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(FACEBOOK_URL)}&tabs=timeline&width=500&height=650&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false`;
 
 export default async function Page() {
-  const lindex = await getLindexEvents();
+  const [lindex, membership] = await Promise.all([getLindexEvents(), readMembership()]);
+  const events = lindex.events.filter(item => !isClubSpecial(item.title));
+  const announcements = lindex.announcements.filter(item => !isClubSpecial(item.title));
 
   return <main>
     <section className="pagehero eventsHero">
@@ -29,20 +33,21 @@ export default async function Page() {
     <section id="club-events" className="announcementsSection">
       <div className="announcementsInner">
         <p className="eyebrow">UPCOMING &amp; RECENT</p>
-        <h2>Club Events</h2>
-        <div className={`eventShowcase eventShowcase--${lindex.events.length === 1 ? 'single' : lindex.events.length === 2 ? 'pair' : lindex.events.length === 3 ? 'trio' : lindex.events.length > 3 ? 'many' : 'empty'}`}>
-          {lindex.events.length === 0 ? (
+        <h2>Club Events and Announcements</h2>
+        <ClubSpecials lindex={lindex} membership={membership} />
+        <div className={`eventShowcase eventShowcase--${events.length === 1 ? 'single' : events.length === 2 ? 'pair' : events.length === 3 ? 'trio' : events.length > 3 ? 'many' : 'empty'}`}>
+          {events.length === 0 ? (
             <div className="eventShowcaseEmpty">
               <p>{lindex.connected ? 'No public events are currently scheduled. Check back soon or visit LINDEX for member events.' : 'For the latest event details, visit LINDEX or our Facebook page.'}</p>
             </div>
           ) : (
-            lindex.events.map((item) => <EventTile item={item} key={item.id} />)
+            events.map((item) => <EventTile item={item} key={item.id} />)
           )}
           <SocialMembershipCard />
         </div>
       </div>
     </section>
-    <section id="club-announcements" className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2>{lindex.announcements.length ? <div className="announcementGrid">{lindex.announcements.map(item=><article className="announcementCard" key={item.id}><time dateTime={item.created_at}>{new Date(item.created_at).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'America/New_York'})}</time><h3>{item.title}</h3><p>{item.message}</p></article>)}</div> : <p>{lindex.connected?'No public announcements at the moment.':'Club announcements are temporarily unavailable. Please check LINDEX for updates.'}</p>}</div></section>
+    <section id="club-announcements" className="announcementsSection"><div className="announcementsInner"><p className="eyebrow">CLUB BULLETIN</p><h2>Latest Announcements</h2>{announcements.length ? <div className="announcementGrid">{announcements.map(item=><article className="announcementCard" key={item.id}><time dateTime={item.created_at}>{new Date(item.created_at).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'America/New_York'})}</time><h3>{item.title}</h3><p>{item.message}</p></article>)}</div> : <p>{lindex.connected?'No additional public announcements at the moment.':'Club announcements are temporarily unavailable. Please check LINDEX for updates.'}</p>}</div></section>
     <section className="socialSection" aria-labelledby="facebook-heading">
       <div className="facebookFeature">
         <div className="facebookFeatureCopy">
