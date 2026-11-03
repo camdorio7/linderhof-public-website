@@ -16,7 +16,16 @@ const features = [
 
 export default async function Home() {
   const lindex = await getLindexEvents();
-  const featuredEvents = lindex.events.slice(0, 3);
+  const specialTitle = /^(membership special|special):\s*(.+)$/i;
+  const featuredEvents = lindex.events.filter((event) => !specialTitle.test(event.title.trim())).slice(0, 3);
+  const posts = [
+    ...lindex.announcements.map((item) => ({ key: `announcement-${item.id}`, title: item.title, message: item.message, flyer: null })),
+    ...lindex.events.map((item) => ({ key: `event-${item.id}`, title: item.title, message: item.description, flyer: item.image_url })),
+  ];
+  const specials = posts.flatMap((post) => {
+    const match = specialTitle.exec(post.title.trim());
+    return match ? [{ ...post, headline: match[2], membership: match[1].toLowerCase() === 'membership special' }] : [];
+  });
 
   return (
     <main>
@@ -67,6 +76,22 @@ export default async function Home() {
         <div className="announcementsInner">
           <p className="eyebrow">UPCOMING AT LINDERHOF</p>
           <h2 id="home-events-heading">Club Events</h2>
+          {specials.map((special) => (
+            <article key={special.key} className="membershipCheckoutCallout">
+              <div>
+                <p className="eyebrow">{special.membership ? 'MEMBERSHIP SPECIAL' : 'CLUB SPECIAL'}</p>
+                <h3>{special.headline}</h3>
+                <p style={{ whiteSpace: 'pre-line' }}>{special.message}</p>
+              </div>
+              {special.flyer && /^https:\/\//i.test(special.flyer) && (
+                <a href={special.flyer} target="_blank" rel="noopener noreferrer" aria-label={`Open the full flyer for ${special.headline}`}>
+                  <img src={special.flyer} alt={`${special.headline} flyer`} loading="lazy"
+                    style={{ display: 'block', width: 'min(240px, 100%)', height: 'auto' }} />
+                </a>
+              )}
+              {special.membership && <Link className="button dark" href="/membership">View membership options ↗</Link>}
+            </article>
+          ))}
           <div className={`eventShowcase eventShowcase--${featuredEvents.length === 1 ? 'single' : featuredEvents.length === 2 ? 'pair' : featuredEvents.length === 3 ? 'trio' : 'empty'}`}>
             {featuredEvents.length ? (
               featuredEvents.map((item) => <EventTile key={item.id} item={item} />)
