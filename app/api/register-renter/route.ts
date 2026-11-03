@@ -16,10 +16,10 @@ export async function POST(request:Request){
   const key=process.env.LINDEX_SUPABASE_SERVICE_ROLE_KEY;
   if(!url||!key){console.error('LINDEX renter submission configuration missing');return json({error:'Renter registration is temporarily unavailable.'},503);}
   const headers={apikey:key,Authorization:`Bearer ${key}`,'Content-Type':'application/json'};
-  const ownerRes=await fetch(`${url}/rest/v1/profiles?select=id,unit_number,first_name,last_name,email,membership_level,membership_status,good_standing&email=eq.${encodeURIComponent(email)}&limit=20`,{headers,cache:'no-store'});
-  if(!ownerRes.ok){console.error('LINDEX owner lookup failed',ownerRes.status);return json({error:'Unable to process registration.'},502);}
+  const ownerRes=await fetch(`${url}/rest/v1/profiles?select=id,unit_number,full_name,email,membership_level,membership_status,good_standing&email=eq.${encodeURIComponent(email)}&limit=20`,{headers,cache:'no-store'});
+  if(!ownerRes.ok){console.error('LINDEX owner lookup failed',ownerRes.status,(await ownerRes.text()).slice(0,800));return json({error:'Unable to process registration.'},502);}
   const owners=await ownerRes.json();
-  const owner=owners.find((p:any)=>String(p.unit_number||'').trim().toLowerCase()===unit.toLowerCase()&&String(p.first_name||'').trim().toLowerCase()===first.toLowerCase()&&String(p.last_name||'').trim().toLowerCase()===last.toLowerCase()&&p.membership_level==='owner'&&p.membership_status==='active'&&p.good_standing===true);
+  const owner=owners.find((p:any)=>String(p.unit_number||'').trim().toLowerCase()===unit.toLowerCase()&&String(p.full_name||'').trim().replace(/\s+/g,' ').toLowerCase()===`${first} ${last}`.replace(/\s+/g,' ').toLowerCase()&&p.membership_level==='owner'&&p.membership_status==='active'&&p.good_standing===true);
   // Do not disclose whether a particular owner, email, or unit is in the member directory.
   if(!owner)return json({error:'We could not verify the owner and unit. Please sign in to LINDEX to register your renter or contact the clubhouse.'},422);
   const duplicate=await fetch(`${url}/rest/v1/renter_stays?select=id&owner_id=eq.${owner.id}&renter_email=eq.${encodeURIComponent(renterEmail)}&start_date=eq.${arrival}&end_date=eq.${departure}&status=eq.pending&limit=1`,{headers,cache:'no-store'});
