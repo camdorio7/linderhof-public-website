@@ -16,17 +16,19 @@ export async function POST(request:Request){
   const key=process.env.LINDEX_SUPABASE_SERVICE_ROLE_KEY;
   if(!url||!key){console.error('LINDEX renter submission configuration missing');return json({error:'Renter registration is temporarily unavailable.'},503);}
   const headers={apikey:key,Authorization:`Bearer ${key}`,'Content-Type':'application/json'};
-  const ownerRes=await fetch(`${url}/rest/v1/profiles?select=id,unit_number,full_name,email,membership_level,membership_status,good_standing&email=eq.${encodeURIComponent(email)}&limit=20`,{headers,cache:'no-store'});
-  if(!ownerRes.ok){console.error('LINDEX owner lookup failed',ownerRes.status,(await ownerRes.text()).slice(0,800));return json({error:'Unable to process registration.'},502);}
-  const owners=await ownerRes.json();
-  const owner=owners.find((p:any)=>String(p.unit_number||'').trim().toLowerCase()===unit.toLowerCase()&&String(p.full_name||'').trim().replace(/\s+/g,' ').toLowerCase()===`${first} ${last}`.replace(/\s+/g,' ').toLowerCase()&&p.membership_level==='owner'&&p.membership_status==='active'&&p.good_standing===true);
-  // Do not disclose whether a particular owner, email, or unit is in the member directory.
-  if(!owner)return json({error:'We could not verify the owner and unit. Please sign in to LINDEX to register your renter or contact the clubhouse.'},422);
-  const duplicate=await fetch(`${url}/rest/v1/renter_stays?select=id&owner_id=eq.${owner.id}&renter_email=eq.${encodeURIComponent(renterEmail)}&start_date=eq.${arrival}&end_date=eq.${departure}&status=eq.pending&limit=1`,{headers,cache:'no-store'});
-  if(!duplicate.ok)return json({error:'Unable to verify the registration.'},502);
-  if((await duplicate.json()).length)return json({ok:true});
-  const insert=await fetch(`${url}/rest/v1/renter_stays`,{method:'POST',headers:{...headers,Prefer:'return=minimal'},body:JSON.stringify({owner_id:owner.id,unit_number:owner.unit_number,renter_name:renter,renter_email:renterEmail,start_date:arrival,end_date:departure,occupants,status:'pending'}),cache:'no-store'});
-  if(!insert.ok){console.error('LINDEX renter registration insert failed',insert.status);return json({error:'Unable to save the registration in LINDEX.'},502);}
+  // Public intake is a pending request only. No ownership or access is granted here.
+  const unitKey=unit.toLowerCase().replace(/\s+/g,'');
+  const registry=await fetch(`${url}/rest/v1/lindex_owner_registry?select=id,unit_label&unit_key=eq.${encodeURIComponent(unitKey)}&limit=1`,{headers,cache:'no-store'});
+  if(!registry.ok){console.error('Owner registry lookup failed',registry.status);return json({error:'Registration is temporarily unavailable.'},503);}
+  const matches=await registry.json();
+  // Do not reveal whether a unit is in the private registry.
+  if(!matches.length)return json({error:'Unable to submit this request. Please contact the clubhouse.'},422);
+  const setting=await fetch(`${url}/rest/v1/lindex_public_renter_settings?select=enabled&id=eq.1`,{headers,cache:'no-store'});
+  if(!setting.ok)return json({error:'Registration is temporarily unavailable.'},503);
+  if(!(await setting.json())[0]?.enabled)return json({error:'Registration without a LINDEX account is currently disabled.'},403);
+  const payload={unit_id:matches[0].id,unit_label:matches[0].unit_label,owner_first:first,owner_last:last,owner_contact_email:email,renter_name:renter,renter_email:renterEmail,start_date:arrival,end_date:departure,occupants,status:'pending'};
+  const insert=await fetch(`${url}/rest/v1/lindex_public_renter_requests`,{method:'POST',headers:{...headers,Prefer:'return=minimal'},body:JSON.stringify(payload),cache:'no-store'});
+  if(!insert.ok){console.error('Public renter intake insert failed',insert.status,(await insert.text()).slice(0,200));return json({error:'Unable to save your request.'},502);}
   return json({ok:true});
  }catch(e){console.error('Renter registration failed',e);return json({error:'Unable to process the registration.'},500);}
 }

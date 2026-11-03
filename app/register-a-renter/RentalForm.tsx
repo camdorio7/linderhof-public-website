@@ -16,17 +16,18 @@ export default function RentalForm(){
       setState('done');
     } catch {setState('error');}
   }
-  if(state==='done')return <p role="status">Your renter registration was saved in LINDEX and is pending clubhouse approval. This does not grant access or issue a pass.</p>;
+  if(state==='done')return <p role="status">Your request was submitted for clubhouse review. Ownership and renter authorization must be verified by staff. This does not grant access, reserve a pass, or confirm payment.</p>;
   return <form onSubmit={submit} className="inquiryForm" style={{gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,235px),1fr))'}}>
     <label>Owner first name<input name="first" maxLength={80} required autoComplete="given-name"/></label>
     <label>Owner last name<input name="last" maxLength={80} required autoComplete="family-name"/></label>
-    <label>Owner email<input name="email" maxLength={254} required type="email" autoComplete="email"/></label>
+    <label>Owner contact email<input name="email" maxLength={254} required type="email" autoComplete="email"/></label>
     <label>Unit and building<input name="unit" maxLength={100} required/></label>
     <label>Renter full name<input name="renter" maxLength={120} required/></label>
     <label>Renter email<input name="renterEmail" maxLength={254} type="email" required/></label>
     <label>Arrival<input name="arrival" type="date" required value={arrival} onChange={e=>setArrival(e.target.value)}/></label>
     <label>Departure<input name="departure" type="date" required min={arrival}/></label>
     <label>Number of occupants<input name="occupants" type="number" defaultValue={1} min="1" max="99" required/></label>
+    <label style={{gridColumn:"1 / -1"}}><input type="checkbox" required/> I confirm I am authorized to register a renter staying in a condominium within Linderhof Country Club. Submitting does not grant access.</label>
     <input hidden name="website" tabIndex={-1} autoComplete="off"/>
     <button type="submit" disabled={state==='sending'}>{state==='sending'?'Sending…':'Submit stay for review'}</button>
     {state==='error'&&<p role="alert">We could not save your registration in LINDEX. Please try again or email <a href="mailto:linderhofclubhouse@gmail.com">the clubhouse</a> with your stay details.</p>}
