@@ -1,5 +1,7 @@
 import defaults from '../content/membership-defaults.json';
-export async function readMembership(): Promise<typeof defaults> {
+type Announcement = { enabled: boolean; title: string; details: string; flyer: string; checkout: string };
+type Membership = typeof defaults & { announcement?: Announcement | null };
+export async function readMembership(): Promise<Membership> {
   try {
     const res = await fetch('https://linderhofmembers.com/api/public-membership', {cache:'no-store',signal:AbortSignal.timeout(5000)});
     if (!res.ok) return defaults;
