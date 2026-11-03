@@ -19,8 +19,8 @@ export default function RentalForm(){
   if(state==='done')return <p role="status">Your renter registration was saved in LINDEX and is pending clubhouse approval. This does not grant access or issue a pass.</p>;
   const section={border:'1px solid rgba(125,125,125,.22)',borderRadius:14,padding:'clamp(18px,3vw,28px)',marginBottom:20,background:'#fff'};
   const grid={display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,260px),1fr))',gap:'18px 22px'} as const;
-  const field={display:'grid',gap:8,minWidth:0} as const;
-  const input={width:'100%',boxSizing:'border-box' as const,minWidth:0};
+  const field={display:'grid',gap:10,minWidth:0,fontSize:16,fontWeight:500,lineHeight:1.4} as const;
+  const input={width:'100%',boxSizing:'border-box' as const,minWidth:0,height:56,minHeight:56,padding:'12px 16px',border:'1px solid #b8c3ba',borderRadius:8,background:'#fff',color:'#24382e',fontSize:16,fontWeight:400,letterSpacing:0,lineHeight:1.4,boxShadow:'none',fontFamily:'inherit'} as const;
   return <form onSubmit={submit} style={{maxWidth:960,margin:'28px auto 0'}}>
     <section style={section}>
       <h2 style={{margin:'0 0 8px'}}>Owner Information</h2><p style={{margin:'0 0 22px',opacity:.75}}>Enter your contact details. Your email does not need to be your LINDEX login.</p>

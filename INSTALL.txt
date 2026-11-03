@@ -1,0 +1,1 @@
+Replace app/register-a-renter/RentalForm.tsx in the public website repository, then deploy to Vercel. No database changes required.
