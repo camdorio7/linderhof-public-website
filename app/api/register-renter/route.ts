@@ -17,12 +17,11 @@ export async function POST(request:Request){
   if(!url||!key){console.error('LINDEX renter submission configuration missing');return json({error:'Renter registration is temporarily unavailable.'},503);}
   const headers={apikey:key,Authorization:`Bearer ${key}`,'Content-Type':'application/json'};
   // Public intake is a pending request only. No ownership or access is granted here.
-  // Registry imports retain the `Unit` prefix from labels such as `Unit 18-11`.
-  // Accept the visitor's `18-11` and the registry's `unit18-11` as the same unit,
-  // without broad/partial matching or disclosing registry records to the visitor.
-  const unitKey=unit.toLowerCase().replace(/\s+/g,'');
-  const bareKey=unitKey.replace(/^unit[-:#]*/, '');
-  const candidateKeys=[...new Set([unitKey, bareKey, `unit${bareKey}`])];
+  // Registry keys strip punctuation: e.g. 18-11 -> 1811.
+  // Match only exact normalized keys, never partial matches.
+  const unitKey=unit.toLowerCase().replace(/[^a-z0-9]/g,'').replace(/^unit/, '');
+  if(!unitKey)return json({error:'Please check the condominium unit.'},400);
+  const candidateKeys=[...new Set([unitKey, `unit${unitKey}`])];
   const filter=`or=(${candidateKeys.map(k=>`unit_key.eq.${k}`).join(',')})`;
   const registry=await fetch(`${url}/rest/v1/lindex_owner_registry?select=id,unit_label&${encodeURI(filter)}`,{headers,cache:'no-store'});
   if(!registry.ok){console.error('Owner registry lookup failed',registry.status);return json({error:'Registration is temporarily unavailable.'},503);}
