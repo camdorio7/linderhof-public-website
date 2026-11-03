@@ -17,12 +17,18 @@ export async function POST(request:Request){
   if(!url||!key){console.error('LINDEX renter submission configuration missing');return json({error:'Renter registration is temporarily unavailable.'},503);}
   const headers={apikey:key,Authorization:`Bearer ${key}`,'Content-Type':'application/json'};
   // Public intake is a pending request only. No ownership or access is granted here.
+  // Registry imports retain the `Unit` prefix from labels such as `Unit 18-11`.
+  // Accept the visitor's `18-11` and the registry's `unit18-11` as the same unit,
+  // without broad/partial matching or disclosing registry records to the visitor.
   const unitKey=unit.toLowerCase().replace(/\s+/g,'');
-  const registry=await fetch(`${url}/rest/v1/lindex_owner_registry?select=id,unit_label&unit_key=eq.${encodeURIComponent(unitKey)}&limit=1`,{headers,cache:'no-store'});
+  const bareKey=unitKey.replace(/^unit[-:#]*/, '');
+  const candidateKeys=[...new Set([unitKey, bareKey, `unit${bareKey}`])];
+  const filter=`or=(${candidateKeys.map(k=>`unit_key.eq.${k}`).join(',')})`;
+  const registry=await fetch(`${url}/rest/v1/lindex_owner_registry?select=id,unit_label&${encodeURI(filter)}`,{headers,cache:'no-store'});
   if(!registry.ok){console.error('Owner registry lookup failed',registry.status);return json({error:'Registration is temporarily unavailable.'},503);}
   const matches=await registry.json();
   // Do not reveal whether a unit is in the private registry.
-  if(!matches.length)return json({error:'Unable to submit this request. Please contact the clubhouse.'},422);
+  if(matches.length!==1)return json({error:'Unable to submit this request. Please contact the clubhouse.'},422);
   const setting=await fetch(`${url}/rest/v1/lindex_public_renter_settings?select=enabled&id=eq.1`,{headers,cache:'no-store'});
   if(!setting.ok)return json({error:'Registration is temporarily unavailable.'},503);
   if(!(await setting.json())[0]?.enabled)return json({error:'Registration without a LINDEX account is currently disabled.'},403);
