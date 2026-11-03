@@ -42,3 +42,10 @@ Remove any old `app/api/checkout/route.ts` or `app/shop` files still in GitHub; 
 - Instagram: Set `NEXT_PUBLIC_INSTAGRAM_URL` to the club's official Instagram profile URL. A live Instagram post grid requires Meta-approved access or a compliant third-party provider; the site currently offers a direct profile link.
 - No Resend configuration is needed yet. Inquiry forms remain disabled until email delivery is configured.
 - The low-resolution entrance photo is no longer used as a full-screen hero. Original Linderhof drone images are used instead.
+
+## LINDEX renter registration integration
+The public `/register-a-renter` form now posts to `/api/register-renter` instead of the email inquiry endpoint. Set these **server-only** Vercel environment variables for the PUBLIC WEBSITE project:
+- `LINDEX_SUPABASE_URL` — the Supabase project URL used by LINDEX
+- `LINDEX_SUPABASE_SERVICE_ROLE_KEY` — the Supabase service-role secret (never prefix with `NEXT_PUBLIC_`, never expose in the browser)
+
+The server checks the supplied owner name, email and unit against an active owner profile in good standing, avoids exact pending duplicates, and writes `renter_stays` with `status: pending`. Existing LINDEX admins approve or reject it. The owner can also register through the authenticated LINDEX interface. This is not proof of ownership: a public form can be impersonated, so clubhouse staff **must independently verify owner authorization before approving**. For stronger security, require owner sign-in or email verification before accepting a public submission. Rate limiting / bot protection is recommended for production. No email delivery configuration is needed for this form.
