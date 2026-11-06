@@ -6,6 +6,8 @@ export type LindexEvent = {
   description: string | null;
   location: string | null;
   event_type: string | null;
+  audience?: string | null;
+  square_url?: string | null;
   image_url: string | null;
 };
 
