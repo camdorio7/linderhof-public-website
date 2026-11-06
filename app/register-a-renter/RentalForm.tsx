@@ -7,19 +7,22 @@ export default function RentalForm(){
   const [units,setUnits]=useState<{id:string,label:string}[]>([]);
   useEffect(()=>{if(unitId||!unitQuery.trim()){setUnits([]);return}const controller=new AbortController();const timer=setTimeout(()=>{fetch('/api/units?q='+encodeURIComponent(unitQuery),{signal:controller.signal}).then(r=>r.ok?r.json():{units:[]}).then(d=>setUnits(d.units||[])).catch(()=>{})},180);return()=>{clearTimeout(timer);controller.abort()}},[unitQuery,unitId]);
   const [state,setState]=useState<'ready'|'sending'|'done'|'error'>('ready');
+  const [errorMessage,setErrorMessage]=useState('');
   async function submit(event:FormEvent<HTMLFormElement>){
     event.preventDefault();
     if(state==='sending')return;
-    if(!unitId){setState('error');return;}
+    if(!unitId){setErrorMessage('Please select a condominium unit from the suggestions.');setState('error');return;}
     const data=new FormData(event.currentTarget);
     const get=(name:string)=>String(data.get(name)||'').trim();
+    setErrorMessage('');
     setState('sending');
     try {
       const response=await fetch('/api/register-renter',{method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({...Object.fromEntries(data.entries()),unitId})});
-      if(!response.ok || !(await response.json()).ok)throw Error();
+      const result=await response.json().catch(()=>({}));
+      if(!response.ok || !result.ok)throw Error(result.error||'Unable to submit your stay.');
       setState('done');
-    } catch {setState('error');}
+    } catch (error) {setErrorMessage(error instanceof Error?error.message:'Unable to submit your stay.');setState('error');}
   }
   if(state==='done')return <p role="status">Your stay request was submitted. The authorized condo owner will be asked to confirm the dates before passes become available. This does not grant access or issue a pass.</p>;
   const section={border:'1px solid rgba(125,125,125,.22)',borderRadius:14,padding:'clamp(18px,3vw,28px)',marginBottom:20,background:'#fff'};
@@ -54,6 +57,6 @@ export default function RentalForm(){
       <label htmlFor="renter-authorization" style={{lineHeight:1.6}}>I confirm that the rental information is accurate. The condo owner must approve the stay before passes can be purchased.</label>
     </div>
     <button type="submit" disabled={state==='sending'||!unitId} style={{maxWidth:'100%',minHeight:46}}>{state==='sending'?'Sending…':'Submit stay for review'}</button>
-    {state==='error'&&<p role="alert">We could not save your registration in LINDEX. Please try again or email <a href="mailto:linderhofclubhouse@gmail.com">the clubhouse</a> with your stay details.</p>}
+    {state==='error'&&<p role="alert">{errorMessage} Please try again or email <a href="mailto:linderhofclubhouse@gmail.com">the clubhouse</a> with your stay details.</p>}
   </form>;
 }
