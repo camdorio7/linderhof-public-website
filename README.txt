@@ -1,1 +1,1 @@
-Copy these files into the corresponding public website paths. The renter form now shows server-side validation errors. The existing registration and registry lookup API routes are included for convenient deployment. Requires configured LINDEX_SUPABASE_URL and LINDEX_SUPABASE_SERVICE_ROLE_KEY.
+Replace app/passes/page.tsx in the public Next.js website. Links point to /register-a-renter and https://linderhofmembers.com/guest-passes.
